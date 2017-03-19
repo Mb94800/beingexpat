@@ -138,6 +138,7 @@ PODS:
   - Protobuf (3.2.0)
 
 DEPENDENCIES:
+  - Bolts
   - FacebookCore
   - FacebookLogin
   - FacebookShare
@@ -182,6 +183,6 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   Protobuf: 745f59e122e5de98d4d7ef291e264a0eef80f58e
 
-PODFILE CHECKSUM: 5cfd22e8adf6288bdb677def3db2be95fa530529
+PODFILE CHECKSUM: 3266e580875b766ad2922dc663a6488c1914b212
 
 COCOAPODS: 1.2.0

@@ -50,7 +50,6 @@
 		D999F75F1E7EA60500993780 /* MeasurementHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeasurementHelper.swift; path = "friendlychat/ios-starter/swift-starter/FriendlyChatSwift/MeasurementHelper.swift"; sourceTree = "<group>"; };
 		D999F7651E7EEF7600993780 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		D999F76B1E7EF15500993780 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		D999F7A71E7EFDB700993780 /* beingexpat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "beingexpat-Bridging-Header.h"; sourceTree = "<group>"; };
 		D999F7B81E7F187300993780 /* beingexpat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "beingexpat-Bridging-Header.h"; sourceTree = "<group>"; };
 		D999F7B91E7F229C00993780 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D999F7BB1E7F253700993780 /* beingexpat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = beingexpat.entitlements; sourceTree = "<group>"; };
@@ -123,7 +122,6 @@
 				D9BB54D91E7E001E0051226D /* Products */,
 				149625BA4AB014C1E0C385AF /* Frameworks */,
 				08F05D668F0124156F4E5B75 /* Pods */,
-				D999F7A71E7EFDB700993780 /* beingexpat-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
