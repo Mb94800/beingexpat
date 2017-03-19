@@ -12,5 +12,15 @@ target "beingexpat" do
     pod 'Firebase/RemoteConfig'
     pod 'Firebase/Storage'
     pod 'Firebase/Core'
+    
+    use_frameworks!
+    
+    pod 'FacebookCore'
+    pod 'FacebookLogin'
+    pod 'FacebookShare'
+    
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKShareKit'
+    pod 'FBSDKLoginKit'
 
 end

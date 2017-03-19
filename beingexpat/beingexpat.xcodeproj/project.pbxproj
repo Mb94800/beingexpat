@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B889A007F17278A4DC082E5 /* libPods-beingexpat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B300B28CBB35E22BF711DF0C /* libPods-beingexpat.a */; };
+		BA3A0C8C406FC897C1AE506D /* Pods_beingexpat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6CF4565793F4FEA3A532C1 /* Pods_beingexpat.framework */; };
 		D999F7551E7E0DC100993780 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB54DB1E7E001E0051226D /* AppDelegate.swift */; };
 		D999F75B1E7E9FF200993780 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D999F75A1E7E9FF200993780 /* GoogleService-Info.plist */; };
-		D999F75C1E7EA32100993780 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB54DD1E7E001E0051226D /* SignInViewController.swift */; };
 		D999F7601E7EA60500993780 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999F75D1E7EA60500993780 /* AppState.swift */; };
 		D999F7611E7EA60500993780 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999F75E1E7EA60500993780 /* Constants.swift */; };
 		D999F7621E7EA60500993780 /* MeasurementHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999F75F1E7EA60500993780 /* MeasurementHelper.swift */; };
-		D9BB54E11E7E001E0051226D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9BB54DF1E7E001E0051226D /* Main.storyboard */; };
+		D999F7661E7EEF7600993780 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999F7651E7EEF7600993780 /* SignInViewController.swift */; };
+		D999F76C1E7EF15500993780 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D999F76B1E7EF15500993780 /* Main.storyboard */; };
+		D999F7BA1E7F229C00993780 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999F7B91E7F229C00993780 /* HomeViewController.swift */; };
 		D9BB54E31E7E001E0051226D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9BB54E21E7E001E0051226D /* Assets.xcassets */; };
 		D9BB54E61E7E001E0051226D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9BB54E41E7E001E0051226D /* LaunchScreen.storyboard */; };
 		D9BB54F11E7E001E0051226D /* beingexpatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB54F01E7E001E0051226D /* beingexpatTests.swift */; };
@@ -41,17 +42,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A6CF4565793F4FEA3A532C1 /* Pods_beingexpat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_beingexpat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94C06041901D5ADF4EF2BE46 /* Pods-beingexpat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beingexpat.debug.xcconfig"; path = "beingexpat/Pods/Target Support Files/Pods-beingexpat/Pods-beingexpat.debug.xcconfig"; sourceTree = "<group>"; };
-		B300B28CBB35E22BF711DF0C /* libPods-beingexpat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-beingexpat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D999F7541E7E08D800993780 /* beingexpat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "beingexpat-Bridging-Header.h"; sourceTree = "<group>"; };
 		D999F75A1E7E9FF200993780 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D999F75D1E7EA60500993780 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppState.swift; path = "friendlychat/ios-starter/swift-starter/FriendlyChatSwift/AppState.swift"; sourceTree = "<group>"; };
 		D999F75E1E7EA60500993780 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "friendlychat/ios-starter/swift-starter/FriendlyChatSwift/Constants.swift"; sourceTree = "<group>"; };
 		D999F75F1E7EA60500993780 /* MeasurementHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeasurementHelper.swift; path = "friendlychat/ios-starter/swift-starter/FriendlyChatSwift/MeasurementHelper.swift"; sourceTree = "<group>"; };
+		D999F7651E7EEF7600993780 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		D999F76B1E7EF15500993780 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D999F7A71E7EFDB700993780 /* beingexpat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "beingexpat-Bridging-Header.h"; sourceTree = "<group>"; };
+		D999F7B81E7F187300993780 /* beingexpat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "beingexpat-Bridging-Header.h"; sourceTree = "<group>"; };
+		D999F7B91E7F229C00993780 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D999F7BB1E7F253700993780 /* beingexpat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = beingexpat.entitlements; sourceTree = "<group>"; };
 		D9BB54D81E7E001E0051226D /* beingexpat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = beingexpat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9BB54DB1E7E001E0051226D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D9BB54DD1E7E001E0051226D /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		D9BB54E01E7E001E0051226D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D9BB54E21E7E001E0051226D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9BB54E51E7E001E0051226D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9BB54E71E7E001E0051226D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -71,7 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B889A007F17278A4DC082E5 /* libPods-beingexpat.a in Frameworks */,
+				BA3A0C8C406FC897C1AE506D /* Pods_beingexpat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +108,7 @@
 		149625BA4AB014C1E0C385AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B300B28CBB35E22BF711DF0C /* libPods-beingexpat.a */,
+				1A6CF4565793F4FEA3A532C1 /* Pods_beingexpat.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -119,6 +123,7 @@
 				D9BB54D91E7E001E0051226D /* Products */,
 				149625BA4AB014C1E0C385AF /* Frameworks */,
 				08F05D668F0124156F4E5B75 /* Pods */,
+				D999F7A71E7EFDB700993780 /* beingexpat-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,18 +140,20 @@
 		D9BB54DA1E7E001E0051226D /* beingexpat */ = {
 			isa = PBXGroup;
 			children = (
+				D999F7BB1E7F253700993780 /* beingexpat.entitlements */,
 				D999F75A1E7E9FF200993780 /* GoogleService-Info.plist */,
 				D9BB54DB1E7E001E0051226D /* AppDelegate.swift */,
-				D9BB54DD1E7E001E0051226D /* SignInViewController.swift */,
 				D999F75D1E7EA60500993780 /* AppState.swift */,
 				D999F75E1E7EA60500993780 /* Constants.swift */,
 				D999F75F1E7EA60500993780 /* MeasurementHelper.swift */,
-				D9BB54DF1E7E001E0051226D /* Main.storyboard */,
 				D9BB55091E7E005D0051226D /* logobigearthptitexte.png */,
 				D9BB54E21E7E001E0051226D /* Assets.xcassets */,
 				D9BB54E41E7E001E0051226D /* LaunchScreen.storyboard */,
 				D9BB54E71E7E001E0051226D /* Info.plist */,
-				D999F7541E7E08D800993780 /* beingexpat-Bridging-Header.h */,
+				D999F7651E7EEF7600993780 /* SignInViewController.swift */,
+				D999F7B81E7F187300993780 /* beingexpat-Bridging-Header.h */,
+				D999F76B1E7EF15500993780 /* Main.storyboard */,
+				D999F7B91E7F229C00993780 /* HomeViewController.swift */,
 			);
 			path = beingexpat;
 			sourceTree = "<group>";
@@ -240,7 +247,14 @@
 				TargetAttributes = {
 					D9BB54D71E7E001E0051226D = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = VQ82DK3N8Z;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					D9BB54EB1E7E001E0051226D = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -282,8 +296,8 @@
 				D9BB550C1E7E00A80051226D /* Podfile in Resources */,
 				D9BB54E61E7E001E0051226D /* LaunchScreen.storyboard in Resources */,
 				D9BB550A1E7E005D0051226D /* logobigearthptitexte.png in Resources */,
+				D999F76C1E7EF15500993780 /* Main.storyboard in Resources */,
 				D9BB54E31E7E001E0051226D /* Assets.xcassets in Resources */,
-				D9BB54E11E7E001E0051226D /* Main.storyboard in Resources */,
 				D999F75B1E7E9FF200993780 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,9 +373,10 @@
 			files = (
 				D999F7601E7EA60500993780 /* AppState.swift in Sources */,
 				D999F7621E7EA60500993780 /* MeasurementHelper.swift in Sources */,
-				D999F75C1E7EA32100993780 /* SignInViewController.swift in Sources */,
 				D999F7551E7E0DC100993780 /* AppDelegate.swift in Sources */,
+				D999F7661E7EEF7600993780 /* SignInViewController.swift in Sources */,
 				D999F7611E7EA60500993780 /* Constants.swift in Sources */,
+				D999F7BA1E7F229C00993780 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,14 +412,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D9BB54DF1E7E001E0051226D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D9BB54E01E7E001E0051226D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D9BB54E41E7E001E0051226D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -512,10 +519,15 @@
 			baseConfigurationReference = 94C06041901D5ADF4EF2BE46 /* Pods-beingexpat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = beingexpat/beingexpat.entitlements;
+				DEVELOPMENT_TEAM = VQ82DK3N8Z;
 				INFOPLIST_FILE = beingexpat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mohamed.beingexpat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "beingexpat/beingexpat-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -525,10 +537,14 @@
 			baseConfigurationReference = DDFFC62898752FB6D2436E20 /* Pods-beingexpat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = beingexpat/beingexpat.entitlements;
+				DEVELOPMENT_TEAM = VQ82DK3N8Z;
 				INFOPLIST_FILE = beingexpat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mohamed.beingexpat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "beingexpat/beingexpat-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

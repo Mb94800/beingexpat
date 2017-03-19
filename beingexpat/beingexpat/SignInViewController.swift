@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SignInViewController.swift
 //  beingexpat
 //
 //  Created by Mohamed Said Boubaker on 19/03/2017.
@@ -7,44 +7,43 @@
 //
 
 import UIKit
-
-import Firebase
 import GoogleSignIn
 
+
+import FacebookCore
+import FacebookLogin
+
+// Match the ObjC symbol name inside Main.storyboard.
 @objc(SignInViewController)
+// [START viewcontroller_interfaces]
 class SignInViewController: UIViewController, GIDSignInUIDelegate {
+    
     @IBOutlet weak var signInButton: GIDSignInButton!
-    var handle: FIRAuthStateDidChangeListenerHandle?
+
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().signInSilently()
-        handle = FIRAuth.auth()?.addStateDidChangeListener() { (auth, user) in
-            if user != nil {
-                MeasurementHelper.sendLoginEvent()
-                dump(user)
-                self.performSegue(withIdentifier: Constants.Segues.SignInToBe, sender: nil)
+  
+        if AccessToken.current != nil {
+            self.performSegue(withIdentifier: "ouaiouai", sender: nil)
+        }
+    }
+    
+ 
+    
+    // Once the button is clicked, show the login dialog
+    @objc func loginButtonClicked() {
+        let loginManager = LoginManager()
+        loginManager.logIn([ .publicProfile ], viewController: self) { loginResult in
+            switch loginResult {
+            case .failed(let error):
+                print(error)
+            case .cancelled:
+                print("User cancelled login.")
+            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+                self.performSegue(withIdentifier: "ouaiouai", sender: nil)
+                print("Logged in!")
             }
         }
-    }
-    
-    deinit {
-        if let handle = handle {
-            FIRAuth.auth()?.removeStateDidChangeListener(handle)
-        }
-    }
-    
-    @IBAction func signOut(_ sender: UIButton) {
-        let firebaseAuth = FIRAuth.auth()
-        do {
-            try firebaseAuth?.signOut()
-            dismiss(animated: true, completion: nil)
-        } catch let signOutError as NSError {
-            print ("Error signing out: \(signOutError.localizedDescription)")
-        }
-    }
-    
-}
-
-
+        
+        
+    }}
