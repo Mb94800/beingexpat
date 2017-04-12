@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		BA3A0C8C406FC897C1AE506D /* Pods_beingexpat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6CF4565793F4FEA3A532C1 /* Pods_beingexpat.framework */; };
+		D94874831E9AEF1800B2A132 /* InfosCountryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94874821E9AEF1800B2A132 /* InfosCountryController.swift */; };
+		D94874851E9EBE8200B2A132 /* addicon.png in Resources */ = {isa = PBXBuildFile; fileRef = D94874841E9EBE8200B2A132 /* addicon.png */; };
+		D94874871E9EBEF900B2A132 /* plus-empty.png in Resources */ = {isa = PBXBuildFile; fileRef = D94874861E9EBEF900B2A132 /* plus-empty.png */; };
 		D999F7551E7E0DC100993780 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB54DB1E7E001E0051226D /* AppDelegate.swift */; };
 		D999F75B1E7E9FF200993780 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D999F75A1E7E9FF200993780 /* GoogleService-Info.plist */; };
 		D999F7601E7EA60500993780 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999F75D1E7EA60500993780 /* AppState.swift */; };
@@ -16,12 +19,17 @@
 		D999F7661E7EEF7600993780 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999F7651E7EEF7600993780 /* SignInViewController.swift */; };
 		D999F76C1E7EF15500993780 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D999F76B1E7EF15500993780 /* Main.storyboard */; };
 		D999F7BA1E7F229C00993780 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999F7B91E7F229C00993780 /* HomeViewController.swift */; };
+		D9AF86601E86F8C600B7FD85 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AF865F1E86F8C600B7FD85 /* User.swift */; };
+		D9AF86621E86FB9900B7FD85 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AF86611E86FB9900B7FD85 /* Country.swift */; };
+		D9AF86651E87F12B00B7FD85 /* SearchCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AF86641E87F12B00B7FD85 /* SearchCountryViewController.swift */; };
+		D9AF86671E881C1400B7FD85 /* countries.txt in Resources */ = {isa = PBXBuildFile; fileRef = D9AF86661E881C1400B7FD85 /* countries.txt */; };
 		D9BB54E31E7E001E0051226D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9BB54E21E7E001E0051226D /* Assets.xcassets */; };
 		D9BB54E61E7E001E0051226D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9BB54E41E7E001E0051226D /* LaunchScreen.storyboard */; };
 		D9BB54F11E7E001E0051226D /* beingexpatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB54F01E7E001E0051226D /* beingexpatTests.swift */; };
 		D9BB54FC1E7E001E0051226D /* beingexpatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB54FB1E7E001E0051226D /* beingexpatUITests.swift */; };
 		D9BB550A1E7E005D0051226D /* logobigearthptitexte.png in Resources */ = {isa = PBXBuildFile; fileRef = D9BB55091E7E005D0051226D /* logobigearthptitexte.png */; };
 		D9BB550C1E7E00A80051226D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D9BB550B1E7E00A80051226D /* Podfile */; };
+		D9E7F3D61E9A6D5200D67B5E /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E7F3D51E9A6D5200D67B5E /* GCDBlackBox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +52,9 @@
 /* Begin PBXFileReference section */
 		1A6CF4565793F4FEA3A532C1 /* Pods_beingexpat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_beingexpat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94C06041901D5ADF4EF2BE46 /* Pods-beingexpat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beingexpat.debug.xcconfig"; path = "beingexpat/Pods/Target Support Files/Pods-beingexpat/Pods-beingexpat.debug.xcconfig"; sourceTree = "<group>"; };
+		D94874821E9AEF1800B2A132 /* InfosCountryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfosCountryController.swift; sourceTree = "<group>"; };
+		D94874841E9EBE8200B2A132 /* addicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addicon.png; sourceTree = "<group>"; };
+		D94874861E9EBEF900B2A132 /* plus-empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-empty.png"; sourceTree = "<group>"; };
 		D999F75A1E7E9FF200993780 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D999F75D1E7EA60500993780 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppState.swift; path = "friendlychat/ios-starter/swift-starter/FriendlyChatSwift/AppState.swift"; sourceTree = "<group>"; };
 		D999F75E1E7EA60500993780 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "friendlychat/ios-starter/swift-starter/FriendlyChatSwift/Constants.swift"; sourceTree = "<group>"; };
@@ -53,6 +64,10 @@
 		D999F7B81E7F187300993780 /* beingexpat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "beingexpat-Bridging-Header.h"; sourceTree = "<group>"; };
 		D999F7B91E7F229C00993780 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D999F7BB1E7F253700993780 /* beingexpat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = beingexpat.entitlements; sourceTree = "<group>"; };
+		D9AF865F1E86F8C600B7FD85 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D9AF86611E86FB9900B7FD85 /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		D9AF86641E87F12B00B7FD85 /* SearchCountryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCountryViewController.swift; sourceTree = "<group>"; };
+		D9AF86661E881C1400B7FD85 /* countries.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = countries.txt; sourceTree = "<group>"; };
 		D9BB54D81E7E001E0051226D /* beingexpat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = beingexpat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9BB54DB1E7E001E0051226D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9BB54E21E7E001E0051226D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,6 +81,7 @@
 		D9BB54FD1E7E001E0051226D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9BB55091E7E005D0051226D /* logobigearthptitexte.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logobigearthptitexte.png; path = ../../../../../../Downloads/logobigearthptitexte.png; sourceTree = "<group>"; };
 		D9BB550B1E7E00A80051226D /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Podfile; path = beingexpat/Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D9E7F3D51E9A6D5200D67B5E /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		DDFFC62898752FB6D2436E20 /* Pods-beingexpat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beingexpat.release.xcconfig"; path = "beingexpat/Pods/Target Support Files/Pods-beingexpat/Pods-beingexpat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +128,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D9AF86631E872C3400B7FD85 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				D9AF865F1E86F8C600B7FD85 /* User.swift */,
+				D9AF86611E86FB9900B7FD85 /* Country.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 		D9BB54CF1E7E001E0051226D = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +163,7 @@
 		D9BB54DA1E7E001E0051226D /* beingexpat */ = {
 			isa = PBXGroup;
 			children = (
+				D9AF86631E872C3400B7FD85 /* model */,
 				D999F7BB1E7F253700993780 /* beingexpat.entitlements */,
 				D999F75A1E7E9FF200993780 /* GoogleService-Info.plist */,
 				D9BB54DB1E7E001E0051226D /* AppDelegate.swift */,
@@ -149,9 +175,15 @@
 				D9BB54E41E7E001E0051226D /* LaunchScreen.storyboard */,
 				D9BB54E71E7E001E0051226D /* Info.plist */,
 				D999F7651E7EEF7600993780 /* SignInViewController.swift */,
+				D9E7F3D51E9A6D5200D67B5E /* GCDBlackBox.swift */,
 				D999F7B81E7F187300993780 /* beingexpat-Bridging-Header.h */,
 				D999F76B1E7EF15500993780 /* Main.storyboard */,
+				D94874861E9EBEF900B2A132 /* plus-empty.png */,
+				D94874841E9EBE8200B2A132 /* addicon.png */,
 				D999F7B91E7F229C00993780 /* HomeViewController.swift */,
+				D9AF86641E87F12B00B7FD85 /* SearchCountryViewController.swift */,
+				D9AF86661E881C1400B7FD85 /* countries.txt */,
+				D94874821E9AEF1800B2A132 /* InfosCountryController.swift */,
 			);
 			path = beingexpat;
 			sourceTree = "<group>";
@@ -291,6 +323,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D94874851E9EBE8200B2A132 /* addicon.png in Resources */,
+				D9AF86671E881C1400B7FD85 /* countries.txt in Resources */,
+				D94874871E9EBEF900B2A132 /* plus-empty.png in Resources */,
 				D9BB550C1E7E00A80051226D /* Podfile in Resources */,
 				D9BB54E61E7E001E0051226D /* LaunchScreen.storyboard in Resources */,
 				D9BB550A1E7E005D0051226D /* logobigearthptitexte.png in Resources */,
@@ -373,8 +408,13 @@
 				D999F7621E7EA60500993780 /* MeasurementHelper.swift in Sources */,
 				D999F7551E7E0DC100993780 /* AppDelegate.swift in Sources */,
 				D999F7661E7EEF7600993780 /* SignInViewController.swift in Sources */,
+				D9E7F3D61E9A6D5200D67B5E /* GCDBlackBox.swift in Sources */,
+				D9AF86621E86FB9900B7FD85 /* Country.swift in Sources */,
 				D999F7611E7EA60500993780 /* Constants.swift in Sources */,
 				D999F7BA1E7F229C00993780 /* HomeViewController.swift in Sources */,
+				D9AF86601E86F8C600B7FD85 /* User.swift in Sources */,
+				D9AF86651E87F12B00B7FD85 /* SearchCountryViewController.swift in Sources */,
+				D94874831E9AEF1800B2A132 /* InfosCountryController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -34,39 +34,71 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
             print("Un problème a été rencontré. ")
             return
         }
+        
+        fetchProfile();
         print("Loggé avec succès")
     }
 
     
-  
+    private func getImageFromFlickr() {
+        
+        let url = URL(string: "\(Constants.Flickr.APIBaseURL)?\(Constants.FlickrParameterKeys.Method)=\(Constants.FlickrParameterValues.GalleryPhotosMethod)&\(Constants.FlickrParameterKeys.APIKey)=\(Constants.FlickrParameterValues.APIKey)&\(Constants.FlickrParameterKeys.GalleryID)=\(Constants.FlickrParameterValues.GalleryID)&\(Constants.FlickrParameterKeys.Extras)=\(Constants.FlickrParameterValues.MediumURL)&\(Constants.FlickrParameterKeys.Format)=\(Constants.FlickrParameterValues.ResponseFormat)&\(Constants.FlickrParameterKeys.NoJSONCallback)=\(Constants.FlickrParameterValues.DisableJSONCallback)")!
+        
+        print(url)
+    }
     
     @IBOutlet weak var signInButton: GIDSignInButton!
-    let loginButton: FBSDKLoginButton = {
+    var loginButton: FBSDKLoginButton = {
         let button = FBSDKLoginButton()
-        button.readPermissions = ["email"]
+        button.readPermissions = ["email","public_profile","user_photos","user_birthday"]
         return button
     }()
 
     
     override func viewDidLoad() {
   
-
         super.viewDidLoad()
-     
-        view.addSubview(loginButton)
+            view.addSubview(loginButton)
         loginButton.center = view.center
+        print("ok")
+
+
         loginButton.delegate = self
-        if let token = FBSDKAccessToken.current() {
-            fetchProfile()
+
+        
+        if (FBSDKAccessToken.current()) != nil {
+           
+            fetchProfile();
+            
         }
     } 
     
     func fetchProfile(){
         print(" ----- fetch profile ------ ")
+        DispatchQueue.main.async{
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewControllerID")
+            self.show(vc, sender: self)
+        }
     
     }
+    
+    func getFBUserInfo() {
+        let request = GraphRequest(graphPath: "me", parameters: ["fields":"email,name"], accessToken: AccessToken.current, httpMethod: .GET, apiVersion: FacebookCore.GraphAPIVersion.defaultVersion)
+        request.start { (response, result) in
+            switch result {
+            case .success(let value):
+                print(value.dictionaryValue)
+             
+            case .failed(let error):
+                print(error)
+            }
+        }
+    }
+    
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         print("User Logged In")
+        getFBUserInfo()
         if ((error) != nil)
         {
             // Process error
@@ -86,7 +118,11 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("User Logged Out")
+
+        
     }
+    
+    
 
  
     
