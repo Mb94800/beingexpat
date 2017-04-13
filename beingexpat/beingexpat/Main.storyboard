@@ -103,6 +103,11 @@
                                     <segue destination="kmX-lZ-fX4" kind="show" id="qdt-Tj-QVw"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oT-xs-vIn" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="16" y="583" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="logobigearthptitexte.png" translatesAutoresizingMaskIntoConstraints="NO" id="sI2-QQ-4rv">
                                 <rect key="frame" x="-7" y="0.0" width="95" height="98"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -113,6 +118,7 @@
                     <connections>
                         <outlet property="BienvenueUser" destination="mm2-WN-Wm9" id="2BA-XU-DzV"/>
                         <outlet property="favCountries" destination="dCN-QF-Ata" id="r9D-SZ-ORC"/>
+                        <outlet property="loginButton" destination="8oT-xs-vIn" id="Jte-Tm-rTY"/>
                         <outlet property="searchDisplayController" destination="f4A-4c-qeT" id="OL1-ax-VuB"/>
                         <outlet property="view" destination="9Q9-dx-erR" id="294-08-VpH"/>
                     </connections>

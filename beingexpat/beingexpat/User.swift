@@ -35,11 +35,7 @@ class User{
     }
     
     public func isFavouriteCountry(Country: Country) -> Bool{
-        if(self.favoritesCountries.contains(Country)){
-            return true
-        }else{
-            return false
-        }
+        return false;
     }
 
 

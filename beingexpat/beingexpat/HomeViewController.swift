@@ -30,11 +30,13 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     
     @IBOutlet weak var IMAGETEST: UIImageView!
+    
     var dataArray = [String]()
     
     var filteredArray = [String]()
     var speciesSearchResults:Array<Country>?
     var shouldShowSearchResults = false
+
     
     
     public func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
@@ -55,12 +57,13 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
 
 
     
- 
-    let loginButton: FBSDKLoginButton = {
-        let button = FBSDKLoginButton()
-        button.readPermissions = ["email"]
-        return button
+    @IBOutlet weak var loginButton: FBSDKLoginButton? = {
+            let button = FBSDKLoginButton()
+            button.readPermissions = ["email"]
+            return button
+      
     }()
+ 
     
     /**
      Sent to the delegate when the button was used to login.
@@ -74,6 +77,8 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
             print("Un problème a été rencontré. ")
             return
         }
+        
+        
         print("Loggé avec succès in HomeView")
     }
     
@@ -83,9 +88,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        view.addSubview(loginButton)
-       
-        print("ok")
+        view.addSubview(loginButton!)
         
         let params = ["fields" : "email, name"]
         let graphRequest = GraphRequest(graphPath: "me", parameters: params)
@@ -105,13 +108,14 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
                    
                     self.loadUserView(user: user)
                     self.loadFavCountries(user: user)
+                    self.createUserInDB(user:user)
                 }
             }
         }
         
        
 
-        loginButton.delegate = self
+        loginButton?.delegate = self
         
         if (FBSDKAccessToken.current()) != nil {
             
@@ -162,9 +166,56 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     
     
-
+    }
     
-    
-    
+    func createUserInDB(user:User){
+        
+        var request = URLRequest(url:Constants.URLDatabase.createUser!)
+        request.httpMethod = "POST"
+        let postParameters = "name="+user.getNameUser()+"&email="+user.getEmailUser()
+        request.httpBody = postParameters.data(using: .utf8)
+        //creating a task to send the post request
+        print("juste avant")
+        print(user.getEmailUser())
+        print(user.getNameUser())
+        
+        let task = URLSession.shared.dataTask(with: request){
+            data, response, error in
+            
+            if error != nil{
+                print("error is \(String(describing: error))")
+                return;
+            }
+            
+            
+            //parsing the response
+            do {
+                //converting resonse to NSDictionary
+                let myJSON =  try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+                
+                //parsing the json
+                if let parseJSON = myJSON {
+                    
+                    //creating a string
+                    var msg : String!
+                    
+                    //getting the json response
+                    msg = parseJSON["message"] as! String?
+                    
+                    //printing the response
+                    print("Ah frère y a une erreur là")
+                    print(msg)
+                    
+                }
+            } catch {
+                print(error)
+            }
+            
+        }
+        //executing the task
+        task.resume()
+        
+        
+        
     }
 }

@@ -58,8 +58,9 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
   
         super.viewDidLoad()
-            view.addSubview(loginButton)
-        loginButton.center = view.center
+        view.addSubview(loginButton)
+        loginButton.center = self.view.center
+        
         print("ok")
 
 
