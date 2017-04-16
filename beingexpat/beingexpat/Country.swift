@@ -7,7 +7,20 @@
 //
 
 import Foundation
+struct Number {
+    static let formatterWithSeparator: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.groupingSeparator = " "
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
+}
 
+extension Integer {
+    var stringFormattedWithSeparator: String {
+        return Number.formatterWithSeparator.string(for: self) ?? ""
+    }
+}
 
 class Country{
     
@@ -16,14 +29,21 @@ class Country{
     var populationCountry: Int
     var currencyCountry: String
     var flagCountry: String
+    var nbFrench2015: String
+    var nbFrench2016: String
     
+   
     init(nameCountry:String){
         self.nameCountry = nameCountry
         self.populationCountry = 0;
         self.currencyCountry = ""
         self.flagCountry = ""
         self.capitalCountry = ""
+        self.nbFrench2015 = ""
+        self.nbFrench2016 = ""
     }
+    
+    
     
     public func getNameCountry() -> String{
         return self.nameCountry
@@ -41,6 +61,26 @@ class Country{
         return self.currencyCountry
     }
     
+    public func getNbFrench2015()-> String{
+        return self.nbFrench2015
+    }
+    
+    public func getNbFrench2016()-> String{
+        return self.nbFrench2016
+    }
+    
+    public func getPopulationCountry() -> String{
+       return NumberFormatter.localizedString(from: NSNumber(value: self.populationCountry), number: NumberFormatter.Style.decimal)
+        
+    }
+    
+    public func setNbFrench2015(nb2015:String){
+        self.nbFrench2015 = nb2015
+    }
+    
+    public func setNbFrench2016(nb2016:String){
+        self.nbFrench2016 = nb2016
+    }
     public func setCurrency(currency: String){
         self.currencyCountry  = currency
     }
@@ -52,4 +92,9 @@ class Country{
     public func setFlagCountry(flagCountry: String){
         self.flagCountry = flagCountry
     }
+    
+    public func setPopulationCountry(populationCountry: Int){
+        self.populationCountry = populationCountry
+    }
+    
 }

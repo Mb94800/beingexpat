@@ -63,6 +63,13 @@
                 <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
                 <false/>
     		</dict>
+            <key>http://localhost:8888/beingexpat/api/infoscountries.php</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+                <false/>
+            </dict>
     	</dict>
 	</dict>
 	<key>UILaunchStoryboardName</key>

@@ -19,14 +19,17 @@ class SearchCountryViewController: UIViewController,  UITableViewDelegate, UITab
     var searchActive : Bool = false
     var data = [
         ["name" : "AUSTRALIE", "code" : "au"],
+        ["name" : "ALGÉRIE","code" : "dz"],
         ["name" : "ALLEMAGNE", "code" : "de"],
         ["name" : "CHINE", "code" : "cn"],
         ["name" : "ESPAGNE", "code" : "es"],
         ["name" : "ÉTATS-UNIS", "code" : "us"],
+        ["name" : "MAROC", "code" : "ma"],
         ["name" : "ROYAUME-UNI", "code" : "gb"]
     ]
     var filtered:[String] = []
     var codeCountry: String?
+    var user = User(name:"",email:"")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,16 +39,16 @@ class SearchCountryViewController: UIViewController,  UITableViewDelegate, UITab
         tableCountries.dataSource = self
         countrySearchBar.delegate = self
      
-        
-        
-         self.navigationController?.navigationItem.backBarButtonItem?.isEnabled = true
+
+  3
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationItem.backBarButtonItem?.isEnabled = true
+        super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = false
     }
-    
+ 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -85,7 +88,10 @@ class SearchCountryViewController: UIViewController,  UITableViewDelegate, UITab
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         print("preparing")
         if segue.identifier == "infosCountry" {
-            if let destination = segue.destination as? InfosCountryController {
+            let barViewControllers = segue.destination as! UITabBarController
+        
+            
+            if let destination = barViewControllers.viewControllers?[0] as? InfosCountryController {
                 
                 let path = tableCountries.indexPathForSelectedRow
                 let cell = tableCountries.cellForRow(at: path!)
@@ -105,11 +111,9 @@ class SearchCountryViewController: UIViewController,  UITableViewDelegate, UITab
         
         let cell = tableView.cellForRow(at: indexPath)
         
-       let country = self.data[indexPath.row]
+        let country = self.data[indexPath.row]
         codeCountry = country["code"]
-        alertView.title = "Pays selectionné"
-        alertView.message = country["name"]
-        alertView.show()
+      
         
         super.performSegue(withIdentifier: "infosCountry", sender: cell)
     }

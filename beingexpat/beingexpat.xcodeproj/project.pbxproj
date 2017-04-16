@@ -23,6 +23,7 @@
 		D9AF86621E86FB9900B7FD85 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AF86611E86FB9900B7FD85 /* Country.swift */; };
 		D9AF86651E87F12B00B7FD85 /* SearchCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AF86641E87F12B00B7FD85 /* SearchCountryViewController.swift */; };
 		D9AF86671E881C1400B7FD85 /* countries.txt in Resources */ = {isa = PBXBuildFile; fileRef = D9AF86661E881C1400B7FD85 /* countries.txt */; };
+		D9B1EFB01EA3D2A200322080 /* ListCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B1EFAF1EA3D2A100322080 /* ListCountry.swift */; };
 		D9BB54E31E7E001E0051226D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9BB54E21E7E001E0051226D /* Assets.xcassets */; };
 		D9BB54E61E7E001E0051226D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9BB54E41E7E001E0051226D /* LaunchScreen.storyboard */; };
 		D9BB54F11E7E001E0051226D /* beingexpatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB54F01E7E001E0051226D /* beingexpatTests.swift */; };
@@ -68,6 +69,7 @@
 		D9AF86611E86FB9900B7FD85 /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		D9AF86641E87F12B00B7FD85 /* SearchCountryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCountryViewController.swift; sourceTree = "<group>"; };
 		D9AF86661E881C1400B7FD85 /* countries.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = countries.txt; sourceTree = "<group>"; };
+		D9B1EFAF1EA3D2A100322080 /* ListCountry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCountry.swift; sourceTree = "<group>"; };
 		D9BB54D81E7E001E0051226D /* beingexpat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = beingexpat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9BB54DB1E7E001E0051226D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9BB54E21E7E001E0051226D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			children = (
 				D9AF865F1E86F8C600B7FD85 /* User.swift */,
 				D9AF86611E86FB9900B7FD85 /* Country.swift */,
+				D9B1EFAF1EA3D2A100322080 /* ListCountry.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				D999F7621E7EA60500993780 /* MeasurementHelper.swift in Sources */,
 				D999F7551E7E0DC100993780 /* AppDelegate.swift in Sources */,
 				D999F7661E7EEF7600993780 /* SignInViewController.swift in Sources */,
+				D9B1EFB01EA3D2A200322080 /* ListCountry.swift in Sources */,
 				D9E7F3D61E9A6D5200D67B5E /* GCDBlackBox.swift in Sources */,
 				D9AF86621E86FB9900B7FD85 /* Country.swift in Sources */,
 				D999F7611E7EA60500993780 /* Constants.swift in Sources */,
@@ -559,11 +563,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = beingexpat/beingexpat.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = VQ82DK3N8Z;
 				INFOPLIST_FILE = beingexpat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mohamed.beingexpat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "beingexpat/beingexpat-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -577,11 +584,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = beingexpat/beingexpat.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = VQ82DK3N8Z;
 				INFOPLIST_FILE = beingexpat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mohamed.beingexpat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "beingexpat/beingexpat-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

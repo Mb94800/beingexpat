@@ -12,7 +12,7 @@ class User{
     
     var name: String
     var email: String
-    var favoritesCountries: Array<Country>
+    var favoritesCountries: Array<String>
     
     
     init(name:String,email:String){
@@ -30,14 +30,25 @@ class User{
         return self.email
     }
     
-    public func getFCUser() -> Array<Country>{
+    public func getFCUser() -> Array<String>{
         return self.favoritesCountries
     }
     
+    public func setNameUser(name:String){
+        self.name = name
+    }
+
+    
+    public func setEmailUser(email:String){
+        self.email = email
+    }
     public func isFavouriteCountry(Country: Country) -> Bool{
         return false;
     }
-
+    
+    public func addFavouriteCountry(countryName: String){
+        self.favoritesCountries.append(countryName)
+    }
 
     
 }

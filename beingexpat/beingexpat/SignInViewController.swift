@@ -28,6 +28,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
      - Parameter result: The results of the login
      - Parameter error: The error (if any) from the login
      */
+   
     public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
     
         if error != nil{
@@ -48,7 +49,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     @IBOutlet weak var signInButton: GIDSignInButton!
-    var loginButton: FBSDKLoginButton = {
+    @IBOutlet weak var loginButton: FBSDKLoginButton? = {
         let button = FBSDKLoginButton()
         button.readPermissions = ["email","public_profile","user_photos","user_birthday"]
         return button
@@ -58,15 +59,14 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
   
         super.viewDidLoad()
-        view.addSubview(loginButton)
-        loginButton.center = self.view.center
+
         
         print("ok")
 
+     
+        loginButton?.delegate = self
 
-        loginButton.delegate = self
-
-        
+        self.navigationController?.popToRootViewController(animated: true)
         if (FBSDKAccessToken.current()) != nil {
            
             fetchProfile();
