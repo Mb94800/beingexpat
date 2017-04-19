@@ -12,7 +12,7 @@
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-
+#import <GoogleMaps/GoogleMaps.h>
 
 
 #endif /* Bringing_Header_h */

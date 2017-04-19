@@ -17,19 +17,11 @@ class SearchCountryViewController: UIViewController,  UITableViewDelegate, UITab
     @IBOutlet weak var imagetest: UIImageView!
     
     var searchActive : Bool = false
-    var data = [
-        ["name" : "AUSTRALIE", "code" : "au"],
-        ["name" : "ALGÉRIE","code" : "dz"],
-        ["name" : "ALLEMAGNE", "code" : "de"],
-        ["name" : "CHINE", "code" : "cn"],
-        ["name" : "ESPAGNE", "code" : "es"],
-        ["name" : "ÉTATS-UNIS", "code" : "us"],
-        ["name" : "MAROC", "code" : "ma"],
-        ["name" : "ROYAUME-UNI", "code" : "gb"]
-    ]
+   
     var filtered:[String] = []
     var codeCountry: String?
     var user = User(name:"",email:"")
+    var listCountries = [Dictionary<String, String>]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +30,8 @@ class SearchCountryViewController: UIViewController,  UITableViewDelegate, UITab
         tableCountries.delegate = self
         tableCountries.dataSource = self
         countrySearchBar.delegate = self
-     
-
-  3
+    
+  
     }
     
     
@@ -86,7 +77,7 @@ class SearchCountryViewController: UIViewController,  UITableViewDelegate, UITab
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        print("preparing")
+
         if segue.identifier == "infosCountry" {
             let barViewControllers = segue.destination as! UITabBarController
         
@@ -102,7 +93,7 @@ class SearchCountryViewController: UIViewController,  UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return listCountries.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -111,7 +102,7 @@ class SearchCountryViewController: UIViewController,  UITableViewDelegate, UITab
         
         let cell = tableView.cellForRow(at: indexPath)
         
-        let country = self.data[indexPath.row]
+        let country = self.listCountries[indexPath.row]
         codeCountry = country["code"]
       
         
@@ -120,7 +111,7 @@ class SearchCountryViewController: UIViewController,  UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "td")
-          let country = self.data[indexPath.row]
+        let country = self.listCountries[indexPath.row]
         cell.textLabel?.text = country["name"]
         cell.layer.backgroundColor = UIColor.clear.cgColor
         self.tableCountries.backgroundColor = .clear

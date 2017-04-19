@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import GoogleMaps
 class InfosCountryController: UIViewController{
     @IBOutlet weak var countryLabelName: UILabel!
     var countryName = ""
@@ -39,12 +39,29 @@ class InfosCountryController: UIViewController{
         let tap = UITapGestureRecognizer(target: self, action: #selector(InfosCountryController.tappedMe))
         addFavCountry.addGestureRecognizer(tap)
         addFavCountry.isUserInteractionEnabled = true
+       
         lineDraw(lineView:lineView)
         getInfosCountry(country: country)
         getNbFrenchAbroad(country: country)
         setInfosCountryUI(country:country)
+        loadGMView(country:country)
     }
     
+    @IBOutlet weak var countryView: GMSMapView!
+    func loadGMView(country: Country){
+        let camera = GMSCameraPosition.camera(withLatitude: -10, longitude: 151.20, zoom: 4.0)
+        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView.isMyLocationEnabled = true
+       
+        
+        // Creates a marker in the center of the map.
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: -10, longitude: 151.20)
+        marker.title = country.getCapitalCountry()
+        marker.snippet = country.getNameCountry()
+        marker.map = mapView
+        self.countryView = mapView
+    }
     func lineDraw(lineView:UIView)
     {
         let border = CALayer()

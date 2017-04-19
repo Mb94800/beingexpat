@@ -31,13 +31,25 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
      */
     
     
- 
+    var codeCountry: String?
     var dataArray = [String]()
     var FCArray = [String]()
     var filteredArray = [String]()
     var speciesSearchResults:Array<Country>?
     var shouldShowSearchResults = false
     var user = User(name:"",email:"")
+    var listCountries = [
+        ["name" : "AUSTRALIE", "code" : "au"],
+        ["name" : "ALGÉRIE","code" : "dz"],
+        ["name" : "ALLEMAGNE", "code" : "de"],
+        ["name" : "CHINE", "code" : "cn"],
+        ["name" : "ESPAGNE", "code" : "es"],
+        ["name" : "ÉTATS-UNIS", "code" : "us"],
+        ["name" : "IRAN", "code" : "ir"],
+        ["name" : "MAROC", "code" : "ma"],
+        ["name" : "NOUVELLE-ZÉLANDE", "code" : "nz"],
+        ["name" : "ROYAUME-UNI", "code" : "gb"]
+    ]
     
     @IBOutlet weak var searchcountry: UIButton!
     @available(iOS 2.0, *)
@@ -93,17 +105,31 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
 
     
     @IBAction func buttonPressed(sender: AnyObject) {
-        performSegue(withIdentifier: "searchcountry", sender: sender)
+        self.performSegue(withIdentifier: "searchcountry", sender: sender)
     }
     
-   func prepareForSegue(segue: UIStoryboardSegue, sender: UIButton) {
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "searchcountry" {
             let destinationController = segue.destination as!   SearchCountryViewController
-            if sender == searchcountry {
-                self.user = destinationController.user
+        
+            destinationController.user = self.user
+            destinationController.listCountries = self.listCountries
+            
+            
+            
+        }else if segue.identifier == "infosCountry" {
+            let barViewControllers = segue.destination as! UITabBarController
+        
+        
+            if let destination = barViewControllers.viewControllers?[0] as? InfosCountryController {
+            
+                let path = favCountries.indexPathForSelectedRow
+                let cell = favCountries.cellForRow(at: path!)
+                destination.countryCode = codeCountry!
+                destination.countryName = (cell?.textLabel?.text!)!
             }
         }
-        
+    
     }
     
     public func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
@@ -174,15 +200,17 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
         let task = session.dataTask(with:request) { (data, response, error) -> Void in
             
             let httpResponse = response as! HTTPURLResponse
+
             let statusCode = httpResponse.statusCode
             
             if (statusCode == 200) {
+                
                 do{
                     let myJSON =  try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
                     let countriesJSON = myJSON?["message"]
                     DispatchQueue.main.async(execute: {
                         for anItem in countriesJSON as! [Dictionary<String, Any>] {
-                            user.addFavouriteCountry(countryName:anItem["namecountry"] as! String)
+                            user.addFavouriteCountry(countryName:anItem["namecountry"] as! String, countrycode:anItem["codeCountry"] as! String)
                     
                         }
                         self.FCArray = user.getFCUser()
@@ -293,5 +321,19 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
         self.favCountries.backgroundColor = .clear
         cell.backgroundColor = .clear
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var alertView = UIAlertView()
+        alertView.addButton(withTitle: "Ok")
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        
+        let favcountries = self.user.getFCUser()
+        let country = favcountries[indexPath.row]
+        
+        
+        
+        super.performSegue(withIdentifier: "infosCountry", sender: cell)
     }
 }

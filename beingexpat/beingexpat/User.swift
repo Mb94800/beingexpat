@@ -46,7 +46,7 @@ class User{
         return false;
     }
     
-    public func addFavouriteCountry(countryName: String){
+    public func addFavouriteCountry(countryName: String,countrycode:String){
         self.favoritesCountries.append(countryName)
     }
 

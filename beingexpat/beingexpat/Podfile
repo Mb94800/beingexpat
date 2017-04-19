@@ -26,6 +26,9 @@ target "beingexpat" do
     pod 'FBSDKShareKit'
     pod 'FBSDKLoginKit'
     
+    pod 'GoogleMaps'
+    pod 'GooglePlaces'
+    
      use_frameworks!
 
 end

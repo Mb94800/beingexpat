@@ -1,5 +1,5 @@
 //
-//  ListCountry.swift
+//  ListCountries.swift
 //  beingexpat
 //
 //  Created by Mohamed Said Boubaker on 16/04/2017.
@@ -7,3 +7,10 @@
 //
 
 import Foundation
+import Foundation
+
+class ListCountries{
+    
+    
+
+}
