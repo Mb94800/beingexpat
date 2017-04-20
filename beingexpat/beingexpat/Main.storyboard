@@ -289,7 +289,7 @@
                                 <rect key="frame" x="25" y="529" width="20" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m8c-lX-ckD" customClass="GMSMapView">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m8c-lX-ckD" customClass="MKMapView">
                                 <rect key="frame" x="-2" y="146" width="379" height="134"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

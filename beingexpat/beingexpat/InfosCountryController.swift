@@ -8,6 +8,9 @@
 
 import Foundation
 import GoogleMaps
+import MapKit
+
+
 class InfosCountryController: UIViewController{
     @IBOutlet weak var countryLabelName: UILabel!
     var countryName = ""
@@ -47,20 +50,48 @@ class InfosCountryController: UIViewController{
         loadGMView(country:country)
     }
     
-    @IBOutlet weak var countryView: GMSMapView!
+    @IBOutlet weak var countryView: MKMapView!
     func loadGMView(country: Country){
-        let camera = GMSCameraPosition.camera(withLatitude: -10, longitude: 151.20, zoom: 4.0)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        mapView.isMyLocationEnabled = true
-       
+        let url = URL(string:"http://maps.googleapis.com/maps/api/geocode/json?address=\(country.getNameCountry())")
+        let request = URLRequest(url:url!)
+        let session = URLSession.shared
         
-        // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: -10, longitude: 151.20)
-        marker.title = country.getCapitalCountry()
-        marker.snippet = country.getNameCountry()
-        marker.map = mapView
-        self.countryView = mapView
+        let task = session.dataTask(with:url!) { (data, response, error) -> Void in
+            
+            let httpResponse = response as! HTTPURLResponse
+            let statusCode = httpResponse.statusCode
+            
+            dump(statusCode)
+            if (statusCode == 200) {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data!,  options: JSONSerialization.ReadingOptions.mutableContainers) as! [String: Any]
+                    
+       
+                  let results = json["results"] as?  NSDictionary
+                    
+                    
+                    dump(results)
+   
+                    DispatchQueue.main.async {
+                        
+                    }
+                    
+                    
+                
+                
+                
+                
+            }catch{
+                
+            }
+            
+            }
+        
+        
+        }
+    
+        task.resume();
+    
     }
     func lineDraw(lineView:UIView)
     {
@@ -208,7 +239,7 @@ class InfosCountryController: UIViewController{
         
 
     }
-    
+
     
     
 }
