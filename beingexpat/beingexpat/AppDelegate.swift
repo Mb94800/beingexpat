@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import FacebookCore
 import FacebookLogin
 import FacebookShare
@@ -38,9 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        FIRApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         GMSServices.provideAPIKey("AIzaSyCJ9lPont_WC56H_Drhi9f9MOtgnVAyjYc")
-        
         return true
     }
     

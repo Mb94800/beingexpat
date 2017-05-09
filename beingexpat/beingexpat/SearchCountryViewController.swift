@@ -78,17 +78,25 @@ class SearchCountryViewController: UIViewController,  UITableViewDelegate, UITab
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
 
-        if segue.identifier == "infosCountry" {
-            let barViewControllers = segue.destination as! UITabBarController
         
+        if segue.identifier == "infosCountry" {
+            
+        
+            let barViewControllers = segue.destination as! UITabBarController
             
             if let destination = barViewControllers.viewControllers?[0] as? InfosCountryController {
+                let news = barViewControllers.viewControllers?[1] as? NewsCountryController
                 
                 let path = tableCountries.indexPathForSelectedRow
                 let cell = tableCountries.cellForRow(at: path!)
+                news?.countryName = (cell?.textLabel?.text!)!
                 destination.countryCode = codeCountry!
                 destination.countryName = (cell?.textLabel?.text!)!
             }
+            
+            
+            
+
         }
     }
     

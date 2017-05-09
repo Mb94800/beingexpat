@@ -13,7 +13,7 @@ import GoogleSignIn
 import FacebookShare
 import FacebookCore
 import FacebookLogin
-
+import Firebase
 import FBSDKCoreKit
 import FBSDKLoginKit
 
@@ -30,7 +30,10 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
    
      */
     
+   
+    @IBOutlet weak var goToProfile: UIButton!
     
+    var ref: FIRDatabaseReference!
     var codeCountry: String?
     var dataArray = [String]()
     var FCArray = [String]()
@@ -46,9 +49,13 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
         ["name" : "ESPAGNE", "code" : "es"],
         ["name" : "ÉTATS-UNIS", "code" : "us"],
         ["name" : "IRAN", "code" : "ir"],
+        ["name" : "IRLANDE", "code" : "ie"],
+        ["name" : "ITALIE", "code" : "it"],
+        ["name" : "JAPON", "code" : "jp"],
         ["name" : "MAROC", "code" : "ma"],
         ["name" : "NOUVELLE-ZÉLANDE", "code" : "nz"],
-        ["name" : "ROYAUME-UNI", "code" : "gb"]
+        ["name" : "ROYAUME-UNI", "code" : "gb"],
+        ["name" : "SUISSE", "code" : "ch"]
     ]
     
     @IBOutlet weak var searchcountry: UIButton!
@@ -59,7 +66,8 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
     override func viewDidLoad() {
         
         super.viewDidLoad()
-       
+        self.ref = FIRDatabase.database().reference()
+        self.navigationItem.setHidesBackButton(true, animated:true);
         view.addSubview(loginButton!)
         favCountries.delegate = self
         favCountries.dataSource = self
@@ -79,18 +87,17 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
                     
                     self.user.setEmailUser(email: responseDictionary["email"] as! String)
                     self.user.setNameUser(name: name as! String)
-
-                    
                     self.loadUserView(user: self.user)
-                    self.loadFavCountries(user: self.user)
-                    self.createUserInDB(user:self.user)
+                    //self.loadFavCountries(user: self.user)
+                    //self.createUserInDB(user:self.user)
                 }
             }
         
         }
         
+
         
-        
+        ref.child("nom").setValue("mohamed")
         loginButton?.delegate = self
         
         if (FBSDKAccessToken.current()) != nil {
@@ -183,7 +190,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
     @IBOutlet weak var BienvenueUser: UILabel!
     func loadUserView(user: User){
         var name = user.name
-        self.BienvenueUser.text = "Bienvenue, \(name)  !"
+       // self.BienvenueUser.text = "Bienvenue, \(name)  !"
     }
     
 
@@ -315,7 +322,6 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "td")
         let favcountry = self.FCArray[indexPath.row]
-        print("bah mdrrr...\(favcountry)")
         cell.textLabel?.text = favcountry
         cell.layer.backgroundColor = UIColor.clear.cgColor
         self.favCountries.backgroundColor = .clear

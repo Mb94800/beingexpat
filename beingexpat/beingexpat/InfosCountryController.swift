@@ -9,13 +9,14 @@
 import Foundation
 import GoogleMaps
 import MapKit
+import Firebase
 
 
 class InfosCountryController: UIViewController{
     @IBOutlet weak var countryLabelName: UILabel!
     var countryName = ""
     var countryCode = ""
-  
+    var ref: FIRDatabaseReference!
 
     @IBOutlet weak var countryFlag: UIImageView!
     
@@ -35,6 +36,7 @@ class InfosCountryController: UIViewController{
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        self.ref = FIRDatabase.database().reference()
         self.countryLabelName.text = countryName
         var country = Country(nameCountry:countryName)
         print("Pays choisi: \(country.getNameCountry())")
@@ -52,7 +54,8 @@ class InfosCountryController: UIViewController{
     
     @IBOutlet weak var countryView: MKMapView!
     func loadGMView(country: Country){
-        let url = URL(string:"http://maps.googleapis.com/maps/api/geocode/json?address=\(country.getNameCountry())")
+        let url = URL(string:"http://maps.googleapis.com/maps/api/geocode/json?address=\(country.getNameCountry().folding(options: .diacriticInsensitive, locale: .current))")
+        dump(url)
         let request = URLRequest(url:url!)
         let session = URLSession.shared
         
@@ -64,17 +67,38 @@ class InfosCountryController: UIViewController{
             dump(statusCode)
             if (statusCode == 200) {
                 do{
-                    let json = try JSONSerialization.jsonObject(with: data!,  options: JSONSerialization.ReadingOptions.mutableContainers) as! [String: Any]
+                    
+                    if let dataGAPI = data{
+                        
+                        let json = try JSONSerialization.jsonObject(with: dataGAPI, options: .allowFragments) as? [String: Any]
                     
        
-                  let results = json["results"] as?  NSDictionary
+                        if let results = json?["results"] as? [[String:Any]]{
+                            if let geometry = results.first? ["geometry"] as? [String:Any]{
+                                if let location = geometry["location"] as? [String:Any]{
+                                    let lat = location["lat"] as! Double
+                                    let lng = location["lng"] as! Double
+                                    var latDelta:CLLocationDegrees = 5
+                                    var longDelta:CLLocationDegrees = 5
+                                    
+                                    var theSpan:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta)
+                                    var pointLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat,lng)
+                                    var region:MKCoordinateRegion = MKCoordinateRegionMake(pointLocation, theSpan)
+                                    self.countryView.setRegion(region,animated: true)
+                                    var pinLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat,lng)
+                                    var objectAnnotation = MKPointAnnotation()
+                                    objectAnnotation.coordinate = pinLocation
+                                    objectAnnotation.title = country.getNameCountry()
+                                    self.countryView.addAnnotation(objectAnnotation)
+                                }
+                            }
                     
+                       
+                        }
                     
-                    dump(results)
-   
-                    DispatchQueue.main.async {
-                        
                     }
+   
+                   
                     
                     
                 
@@ -122,55 +146,32 @@ class InfosCountryController: UIViewController{
         self.labelCountry.text?.uppercased()
         self.populationCountry.text = String((country.getPopulationCountry()) + " habitants")
         self.capitalCountry.text = country.getCapitalCountry()
-        self.french2015.text = ((country.getNbFrench2015()) + " français en 2015")
-        self.french2016.text = ((country.getNbFrench2016()) + " français en 2016")
-        print(country.getNbFrench2015())
-        print(country.getNbFrench2016())
+        
+        
         
     }
     
     private func getNbFrenchAbroad(country: Country){
-        print("we both know")
-        print("we both know")
-        print(Constants.URLDatabase.infosCountries)
-        var request = URLRequest(url:Constants.URLDatabase.infosCountries!)
-        let session = URLSession.shared
-        request.httpMethod = "POST"
-        let postParameters = "country="+(country.getNameCountry().uppercased())
-        request.httpBody = postParameters.data(using: .utf8)
-        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
-        let task = URLSession.shared.dataTask(with: request){
-            data, response, error in
-            
-            let httpResponse = response as! HTTPURLResponse
-            let statusCode = httpResponse.statusCode
-            if (statusCode == 200) {
-                do{
-                    let json =  try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
-                    //parsing the json
-                    if let parseJSON = json {
-                        
-                        var nbFR2015 : String!
-                        var nbFR2016 : String!
-                        
-                        nbFR2015 = parseJSON["nbFR2015"]! as! String
-                        nbFR2016 = parseJSON["nbFR2016"]! as! String
-                        
-                        country.setNbFrench2015(nb2015: nbFR2015)
-                        country.setNbFrench2016(nb2016: nbFR2016)
-        
-                    }
 
-                }catch{
-                     print("Error with Json: \(error)")
-                }
-                
-            }else{
-                print("Error")
+        print("1")
+       
+        self.ref.child("countries").child(country.getNameCountry() as String).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let value = snapshot.value as? [String:Any]{
+                dump(value)
+                var nbFR2015 = value["nbFR2015"]
+                var nbFR2016 = value["nbFR2016"]
+            
+                print(nbFR2015)
+                print(nbFR2016)
+                country.setNbFrench2015(nb2015: "\(nbFR2015!)")
+                country.setNbFrench2016(nb2016: "\(nbFR2016!)")
+                print(nbFR2015)
+                self.french2015.text = ((country.getNbFrench2015()) + " français en 2015")
+                self.french2016.text = ((country.getNbFrench2016()) + " français en 2016")
             }
-        }
-        
-        task.resume();
+            
+        })
+        print("3")
 
     }
     

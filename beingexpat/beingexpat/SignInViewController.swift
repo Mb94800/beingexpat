@@ -17,6 +17,8 @@ import FacebookLogin
 import FBSDKCoreKit
 import FBSDKLoginKit
 
+import Firebase
+
 import SystemConfiguration
 
 // Match the ObjC symbol name inside Main.storyboard.
@@ -29,25 +31,68 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
      - Parameter result: The results of the login
      - Parameter error: The error (if any) from the login
      */
-   
-    public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-    
-        if error != nil{
-            print("Un problème a été rencontré. ")
-            return
-        }
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         
-        fetchProfile();
-        print("Loggé avec succès")
+       
+
     }
 
+    /**
+     Sent to the delegate when the button was used to login.
+     - Parameter loginButton: the sender
+     - Parameter result: The results of the login
+     - Parameter error: The error (if any) from the login
+     */
     
-    private func getImageFromFlickr() {
+    override func viewDidLoad() {
         
-        let url = URL(string: "\(Constants.Flickr.APIBaseURL)?\(Constants.FlickrParameterKeys.Method)=\(Constants.FlickrParameterValues.GalleryPhotosMethod)&\(Constants.FlickrParameterKeys.APIKey)=\(Constants.FlickrParameterValues.APIKey)&\(Constants.FlickrParameterKeys.GalleryID)=\(Constants.FlickrParameterValues.GalleryID)&\(Constants.FlickrParameterKeys.Extras)=\(Constants.FlickrParameterValues.MediumURL)&\(Constants.FlickrParameterKeys.Format)=\(Constants.FlickrParameterValues.ResponseFormat)&\(Constants.FlickrParameterKeys.NoJSONCallback)=\(Constants.FlickrParameterValues.DisableJSONCallback)")!
-        
-        print(url)
+        super.viewDidLoad()
+        if(!isConnectedToNetwork()){
+            networkUnreacheable();
+        }
+        loginButton?.delegate = self
+        self.navigationController?.popToRootViewController(animated: true)
+        self.facebookLogin(sender:loginButton!)
     }
+    
+    @IBAction func facebookLogin(sender: UIButton) {
+        let fbLoginManager = FBSDKLoginManager()
+        fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
+            if let error = error {
+                print("Failed to login: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let accessToken = FBSDKAccessToken.current() else {
+                print("Failed to get access token")
+                return
+            }
+            
+            let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+            
+     
+            FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+                if let error = error {
+                    print("Login error: \(error.localizedDescription)")
+                    let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+                    let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(okayAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    
+                    return
+                }
+                
+                // Present the main view
+                let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewControllerID")
+                self.show(vc, sender: self)
+                
+            })
+            
+        }   
+    }
+   
+
     
     @IBOutlet weak var signInButton: GIDSignInButton!
     @IBOutlet weak var loginButton: FBSDKLoginButton? = {
@@ -57,24 +102,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
     }()
 
     
-    override func viewDidLoad() {
-  
-        super.viewDidLoad()
 
-        
-        if(!isConnectedToNetwork()){
-            networkUnreacheable();
-        }
-        loginButton?.delegate = self
-
-        self.navigationController?.popToRootViewController(animated: true)
-        if (FBSDKAccessToken.current()) != nil {
-           
-            fetchProfile();
-            
-        }
-    }
-    
     func networkUnreacheable(){
          let refreshAlert = UIAlertController(title: "Aucune connexion", message: "Aucune connexion disponible. Cette application nécessite une connexion Internet.", preferredStyle: UIAlertControllerStyle.alert)
         
@@ -110,8 +138,8 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func fetchProfile(){
-        print(" ----- fetch profile ------ ")
         DispatchQueue.main.async{
+            
             let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewControllerID")
             self.show(vc, sender: self)
@@ -125,37 +153,16 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
             switch result {
             case .success(let value):
                 print(value.dictionaryValue)
-             
             case .failed(let error):
                 print(error)
             }
         }
     }
     
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        print("User Logged In")
-        getFBUserInfo()
-        if ((error) != nil)
-        {
-            // Process error
-        }
-        else if result.isCancelled {
-            // Handle cancellations
-        }
-        else {
-            // If you ask for multiple permissions at once, you
-            // should check if specific permissions missing
-            if result.grantedPermissions.contains("email")
-            {
-                // Do work
-            }
-        }
-    }
+  
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("User Logged Out")
-
-        
     }
     
     
@@ -172,10 +179,12 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
             case .cancelled:
                 print("User cancelled login.")
             case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+             
                 self.performSegue(withIdentifier: "ouaiouai", sender: nil)
                 print("Logged in!")
             }
         }
         
         
-    }}
+    }
+}

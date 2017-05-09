@@ -12,6 +12,8 @@
 		D94874851E9EBE8200B2A132 /* addicon.png in Resources */ = {isa = PBXBuildFile; fileRef = D94874841E9EBE8200B2A132 /* addicon.png */; };
 		D94874871E9EBEF900B2A132 /* plus-empty.png in Resources */ = {isa = PBXBuildFile; fileRef = D94874861E9EBEF900B2A132 /* plus-empty.png */; };
 		D984F57F1EA751CD00F0900D /* GMapsDemo-Bridging-Header.m in Sources */ = {isa = PBXBuildFile; fileRef = D984F57E1EA751CC00F0900D /* GMapsDemo-Bridging-Header.m */; };
+		D9975F7C1EAB78A100676331 /* NewsCountryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9975F7B1EAB78A100676331 /* NewsCountryController.swift */; };
+		D9975F7E1EABA94900676331 /* XMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9975F7D1EABA94900676331 /* XMLParser.swift */; };
 		D999F7551E7E0DC100993780 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB54DB1E7E001E0051226D /* AppDelegate.swift */; };
 		D999F75B1E7E9FF200993780 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D999F75A1E7E9FF200993780 /* GoogleService-Info.plist */; };
 		D999F7601E7EA60500993780 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999F75D1E7EA60500993780 /* AppState.swift */; };
@@ -32,6 +34,9 @@
 		D9BB54FC1E7E001E0051226D /* beingexpatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB54FB1E7E001E0051226D /* beingexpatUITests.swift */; };
 		D9BB550A1E7E005D0051226D /* logobigearthptitexte.png in Resources */ = {isa = PBXBuildFile; fileRef = D9BB55091E7E005D0051226D /* logobigearthptitexte.png */; };
 		D9BB550C1E7E00A80051226D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D9BB550B1E7E00A80051226D /* Podfile */; };
+		D9D9ACE71EB3D5B600B29A4B /* UserInfosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D9ACE61EB3D5B500B29A4B /* UserInfosController.swift */; };
+		D9D9ACE91EB3D73600B29A4B /* DSCameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D9ACE81EB3D73600B29A4B /* DSCameraHandler.swift */; };
+		D9D9ACEB1EB652AB00B29A4B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D9ACEA1EB652AB00B29A4B /* Extensions.swift */; };
 		D9E7F3D61E9A6D5200D67B5E /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E7F3D51E9A6D5200D67B5E /* GCDBlackBox.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +64,8 @@
 		D94874841E9EBE8200B2A132 /* addicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addicon.png; sourceTree = "<group>"; };
 		D94874861E9EBEF900B2A132 /* plus-empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-empty.png"; sourceTree = "<group>"; };
 		D984F57E1EA751CC00F0900D /* GMapsDemo-Bridging-Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GMapsDemo-Bridging-Header.m"; sourceTree = "<group>"; };
+		D9975F7B1EAB78A100676331 /* NewsCountryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCountryController.swift; sourceTree = "<group>"; };
+		D9975F7D1EABA94900676331 /* XMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLParser.swift; sourceTree = "<group>"; };
 		D999F75A1E7E9FF200993780 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D999F75D1E7EA60500993780 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppState.swift; path = "friendlychat/ios-starter/swift-starter/FriendlyChatSwift/AppState.swift"; sourceTree = "<group>"; };
 		D999F75E1E7EA60500993780 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "friendlychat/ios-starter/swift-starter/FriendlyChatSwift/Constants.swift"; sourceTree = "<group>"; };
@@ -86,6 +93,9 @@
 		D9BB54FD1E7E001E0051226D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9BB55091E7E005D0051226D /* logobigearthptitexte.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logobigearthptitexte.png; path = ../../../../../../Downloads/logobigearthptitexte.png; sourceTree = "<group>"; };
 		D9BB550B1E7E00A80051226D /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Podfile; path = beingexpat/Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D9D9ACE61EB3D5B500B29A4B /* UserInfosController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfosController.swift; sourceTree = "<group>"; };
+		D9D9ACE81EB3D73600B29A4B /* DSCameraHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSCameraHandler.swift; sourceTree = "<group>"; };
+		D9D9ACEA1EB652AB00B29A4B /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D9E7F3D51E9A6D5200D67B5E /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		DDFFC62898752FB6D2436E20 /* Pods-beingexpat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beingexpat.release.xcconfig"; path = "beingexpat/Pods/Target Support Files/Pods-beingexpat/Pods-beingexpat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,12 +143,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D9975F7A1EAB780D00676331 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				D999F7651E7EEF7600993780 /* SignInViewController.swift */,
+				D999F7B91E7F229C00993780 /* HomeViewController.swift */,
+				D9AF86641E87F12B00B7FD85 /* SearchCountryViewController.swift */,
+				D94874821E9AEF1800B2A132 /* InfosCountryController.swift */,
+				D9975F7B1EAB78A100676331 /* NewsCountryController.swift */,
+				D9D9ACE61EB3D5B500B29A4B /* UserInfosController.swift */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		D9975F7F1EABAB6D00676331 /* RSSReader */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = RSSReader;
+			sourceTree = "<group>";
+		};
 		D9AF86631E872C3400B7FD85 /* model */ = {
 			isa = PBXGroup;
 			children = (
 				D9AF865F1E86F8C600B7FD85 /* User.swift */,
 				D9AF86611E86FB9900B7FD85 /* Country.swift */,
 				D9B1EFB11EA3D42100322080 /* ListCountries.swift */,
+				D9D9ACE81EB3D73600B29A4B /* DSCameraHandler.swift */,
+				D9D9ACEA1EB652AB00B29A4B /* Extensions.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -169,6 +201,8 @@
 		D9BB54DA1E7E001E0051226D /* beingexpat */ = {
 			isa = PBXGroup;
 			children = (
+				D9975F7F1EABAB6D00676331 /* RSSReader */,
+				D9975F7A1EAB780D00676331 /* controller */,
 				D9AF86631E872C3400B7FD85 /* model */,
 				D999F7BB1E7F253700993780 /* beingexpat.entitlements */,
 				D999F75A1E7E9FF200993780 /* GoogleService-Info.plist */,
@@ -180,17 +214,14 @@
 				D9BB54E21E7E001E0051226D /* Assets.xcassets */,
 				D9BB54E41E7E001E0051226D /* LaunchScreen.storyboard */,
 				D9BB54E71E7E001E0051226D /* Info.plist */,
-				D999F7651E7EEF7600993780 /* SignInViewController.swift */,
 				D9E7F3D51E9A6D5200D67B5E /* GCDBlackBox.swift */,
 				D999F7B81E7F187300993780 /* beingexpat-Bridging-Header.h */,
 				D999F76B1E7EF15500993780 /* Main.storyboard */,
 				D94874861E9EBEF900B2A132 /* plus-empty.png */,
 				D94874841E9EBE8200B2A132 /* addicon.png */,
-				D999F7B91E7F229C00993780 /* HomeViewController.swift */,
-				D9AF86641E87F12B00B7FD85 /* SearchCountryViewController.swift */,
 				D9AF86661E881C1400B7FD85 /* countries.txt */,
-				D94874821E9AEF1800B2A132 /* InfosCountryController.swift */,
 				D984F57E1EA751CC00F0900D /* GMapsDemo-Bridging-Header.m */,
+				D9975F7D1EABA94900676331 /* XMLParser.swift */,
 			);
 			path = beingexpat;
 			sourceTree = "<group>";
@@ -413,18 +444,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				D999F7601E7EA60500993780 /* AppState.swift in Sources */,
+				D9D9ACEB1EB652AB00B29A4B /* Extensions.swift in Sources */,
 				D999F7621E7EA60500993780 /* MeasurementHelper.swift in Sources */,
 				D9B1EFB21EA3D42100322080 /* ListCountries.swift in Sources */,
 				D999F7551E7E0DC100993780 /* AppDelegate.swift in Sources */,
 				D999F7661E7EEF7600993780 /* SignInViewController.swift in Sources */,
+				D9975F7C1EAB78A100676331 /* NewsCountryController.swift in Sources */,
+				D9D9ACE71EB3D5B600B29A4B /* UserInfosController.swift in Sources */,
 				D984F57F1EA751CD00F0900D /* GMapsDemo-Bridging-Header.m in Sources */,
 				D9E7F3D61E9A6D5200D67B5E /* GCDBlackBox.swift in Sources */,
+				D9D9ACE91EB3D73600B29A4B /* DSCameraHandler.swift in Sources */,
 				D9AF86621E86FB9900B7FD85 /* Country.swift in Sources */,
 				D999F7611E7EA60500993780 /* Constants.swift in Sources */,
 				D999F7BA1E7F229C00993780 /* HomeViewController.swift in Sources */,
 				D9AF86601E86F8C600B7FD85 /* User.swift in Sources */,
 				D9AF86651E87F12B00B7FD85 /* SearchCountryViewController.swift in Sources */,
 				D94874831E9AEF1800B2A132 /* InfosCountryController.swift in Sources */,
+				D9975F7E1EABA94900676331 /* XMLParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
