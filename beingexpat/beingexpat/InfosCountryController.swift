@@ -39,7 +39,7 @@ class InfosCountryController: UIViewController{
         self.ref = FIRDatabase.database().reference()
         self.countryLabelName.text = countryName
         var country = Country(nameCountry:countryName)
-        print("Pays choisi: \(country.getNameCountry())")
+       
         labelCountry.updateConstraints()
         let tap = UITapGestureRecognizer(target: self, action: #selector(InfosCountryController.tappedMe))
         addFavCountry.addGestureRecognizer(tap)
@@ -54,8 +54,14 @@ class InfosCountryController: UIViewController{
     
     @IBOutlet weak var countryView: MKMapView!
     func loadGMView(country: Country){
-        let url = URL(string:"http://maps.googleapis.com/maps/api/geocode/json?address=\(country.getNameCountry().folding(options: .diacriticInsensitive, locale: .current))")
-        dump(url)
+        print("debut loadgmview")
+        var countryname = country.getNameCountry()
+        countryname = countryname.removingWhitespaces()
+        var stringurl = "http://maps.googleapis.com/maps/api/geocode/json?address=\(countryname.folding(options: .diacriticInsensitive, locale: .current))"
+        
+        
+        let url = URL(string:stringurl)
+        
         let request = URLRequest(url:url!)
         let session = URLSession.shared
         
@@ -65,6 +71,10 @@ class InfosCountryController: UIViewController{
             let statusCode = httpResponse.statusCode
             
             dump(statusCode)
+            
+            if let error = error {
+                print("problem")
+            }
             if (statusCode == 200) {
                 do{
                     
@@ -96,7 +106,7 @@ class InfosCountryController: UIViewController{
                        
                         }
                     
-                    }
+                }
    
                    
                     
@@ -113,8 +123,9 @@ class InfosCountryController: UIViewController{
         
         
         }
-    
+        
         task.resume();
+        print("fin loadgmview")
     
     }
     func lineDraw(lineView:UIView)
@@ -153,7 +164,7 @@ class InfosCountryController: UIViewController{
     
     private func getNbFrenchAbroad(country: Country){
 
-        print("1")
+  
        
         self.ref.child("countries").child(country.getNameCountry() as String).observeSingleEvent(of: .value, with: { (snapshot) in
             if let value = snapshot.value as? [String:Any]{
@@ -161,26 +172,26 @@ class InfosCountryController: UIViewController{
                 var nbFR2015 = value["nbFR2015"]
                 var nbFR2016 = value["nbFR2016"]
             
-                print(nbFR2015)
-                print(nbFR2016)
+              
                 country.setNbFrench2015(nb2015: "\(nbFR2015!)")
                 country.setNbFrench2016(nb2016: "\(nbFR2016!)")
                 print(nbFR2015)
-                self.french2015.text = ((country.getNbFrench2015()) + " français en 2015")
-                self.french2016.text = ((country.getNbFrench2016()) + " français en 2016")
+                self.french2015.text = ((country.getNbFrench2015()) + " en 2015")
+                self.french2016.text = ((country.getNbFrench2016()) + " en 2016")
             }
             
         })
-        print("3")
+
 
     }
     
     private func getInfosCountry(country: Country){
-        let url = URL(string: "\(Constants.RestCountries.APIBaseURL)\(countryCode)")!
+        let url = URL(string: "\(Constants.RestCountries.APIBaseURL)\(self.countryCode)")!
+        
         let request = URLRequest(url:url)
         let session = URLSession.shared
   
-        
+  
         let task = session.dataTask(with:url) { (data, response, error) -> Void in
             
             let httpResponse = response as! HTTPURLResponse
@@ -189,7 +200,10 @@ class InfosCountryController: UIViewController{
            
            
             if (statusCode == 200) {
+                print(statusCode)
+             
                 do{
+                    
                     let json = try JSONSerialization.jsonObject(with: data!,  options: JSONSerialization.ReadingOptions.mutableContainers) as! [String: Any]
                     let capital = json["capital"]! as! String
                     let flagurl = json["flag"]! as! String
@@ -225,12 +239,15 @@ class InfosCountryController: UIViewController{
                     print("Error with Json: \(error)")
                 }
             
+            }else{
+              
             }
         
            
             
         }
         
+    
         
         
         

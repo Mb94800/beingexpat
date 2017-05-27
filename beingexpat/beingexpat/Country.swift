@@ -25,6 +25,7 @@ extension Integer {
 class Country{
     
     var nameCountry: String
+    var codeCountry: String
     var capitalCountry: String
     var populationCountry: Int
     var currencyCountry: String
@@ -41,10 +42,13 @@ class Country{
         self.capitalCountry = ""
         self.nbFrench2015 = ""
         self.nbFrench2016 = ""
+        self.codeCountry = ""
     }
     
     
-    
+    public func getCodeCountry() -> String{
+        return self.codeCountry
+    }
     public func getNameCountry() -> String{
         return self.nameCountry
     }
@@ -72,6 +76,10 @@ class Country{
     public func getPopulationCountry() -> String{
        return NumberFormatter.localizedString(from: NSNumber(value: self.populationCountry), number: NumberFormatter.Style.decimal)
         
+    }
+    
+    public func setCodeCountry(code:String){
+        self.codeCountry = code
     }
     
     public func setNbFrench2015(nb2015:String){

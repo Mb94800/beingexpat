@@ -10,34 +10,54 @@ import Foundation
 
 class User{
     
-    var name: String
-    var email: String
+    var id: String
+    var name: String?
+    var birthday: String?
+    var email: String?
+    var creationDate: String?
     var favoritesCountries: Array<String>
     
     
-    init(name:String,email:String){
-        self.name = name
-        self.email = email
+    init(id:String){
+        self.id = id
         self.favoritesCountries = []
         
     }
     
+    public func getCreationDate() -> String{
+        return self.creationDate!
+    }
     public func getNameUser() -> String{
-        return self.name
+        return self.name!
     }
     
     public func getEmailUser() -> String{
-        return self.email
+        return self.email!
+    }
+    
+    public func getUserID() -> String{
+        return self.id
+    }
+    
+    public func getBirthday() -> String{
+        return self.birthday!
     }
     
     public func getFCUser() -> Array<String>{
         return self.favoritesCountries
     }
     
+    public func setBirthday(birthday:String){
+        self.birthday = birthday
+    }
+    
+    public func setCreationDate(creationDate:String){
+        self.creationDate = creationDate
+    }
+    
     public func setNameUser(name:String){
         self.name = name
     }
-
     
     public func setEmailUser(email:String){
         self.email = email

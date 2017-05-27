@@ -33,6 +33,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
    
     @IBOutlet weak var goToProfile: UIButton!
     
+    @IBOutlet weak var logout: FBSDKLoginButton!
     var ref: FIRDatabaseReference!
     var codeCountry: String?
     var dataArray = [String]()
@@ -40,12 +41,16 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
     var filteredArray = [String]()
     var speciesSearchResults:Array<Country>?
     var shouldShowSearchResults = false
-    var user = User(name:"",email:"")
+    var user: User!
+    var listAllCountries = [Country]()
     var listCountries = [
         ["name" : "AUSTRALIE", "code" : "au"],
         ["name" : "ALGÉRIE","code" : "dz"],
         ["name" : "ALLEMAGNE", "code" : "de"],
+        ["name" : "BRÉSIL", "code" : "br"],
+        ["name" : "CANADA","code":"ca"],
         ["name" : "CHINE", "code" : "cn"],
+        ["name" : "COREE DU SUD", "code" : "kr"],
         ["name" : "ESPAGNE", "code" : "es"],
         ["name" : "ÉTATS-UNIS", "code" : "us"],
         ["name" : "IRAN", "code" : "ir"],
@@ -56,7 +61,9 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
         ["name" : "NOUVELLE-ZÉLANDE", "code" : "nz"],
         ["name" : "ROYAUME-UNI", "code" : "gb"],
         ["name" : "SUISSE", "code" : "ch"]
+        
     ]
+    
     
     @IBOutlet weak var searchcountry: UIButton!
     @available(iOS 2.0, *)
@@ -64,40 +71,22 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
         return FCArray.count
     }
     override func viewDidLoad() {
-        
+    
         super.viewDidLoad()
         self.ref = FIRDatabase.database().reference()
+        self.loadAllCountries()
         self.navigationItem.setHidesBackButton(true, animated:true);
         view.addSubview(loginButton!)
-        favCountries.delegate = self
-        favCountries.dataSource = self
+        //favCountries.delegate = self
+        //favCountries.dataSource = self
         let params = ["fields" : "email, name"]
-        let graphRequest = GraphRequest(graphPath: "me", parameters: params)
-        graphRequest.start {
-            (urlResponse, requestResult) in
-            
-            switch requestResult {
-            case .failed(let error):
-                print("error in graph request:", error)
-                break
-            case .success(let graphResponse):
-                if let responseDictionary = graphResponse.dictionaryValue {
-                    
-                    var name = responseDictionary["name"]
-                    
-                    self.user.setEmailUser(email: responseDictionary["email"] as! String)
-                    self.user.setNameUser(name: name as! String)
-                    self.loadUserView(user: self.user)
-                    //self.loadFavCountries(user: self.user)
-                    //self.createUserInDB(user:self.user)
-                }
-            }
+        self.loadUserView(user: self.user)
+        //self.loadFavCountries(user: self.user)
+     
+      
         
-        }
         
-
         
-        ref.child("nom").setValue("mohamed")
         loginButton?.delegate = self
         
         if (FBSDKAccessToken.current()) != nil {
@@ -107,20 +96,31 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
         }
         
         self.navigationController?.navigationItem.backBarButtonItem?.isEnabled = true
+        print("------- HOMEINVIEWCONTROLLER")
+        dump(user)
+        print("------- HOMEINVIEWCONTROLLER")
     }
     
 
     
     @IBAction func buttonPressed(sender: AnyObject) {
+       
+       
         self.performSegue(withIdentifier: "searchcountry", sender: sender)
+        
     }
     
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "searchcountry" {
-            let destinationController = segue.destination as!   SearchCountryViewController
-        
-            destinationController.user = self.user
-            destinationController.listCountries = self.listCountries
+          
+            
+         
+                let destinationController = segue.destination as!   SearchCountryViewController
+                
+                destinationController.user = self.user
+                destinationController.listCountries = self.listAllCountries
+                
             
             
             
@@ -135,10 +135,44 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
                 destination.countryCode = codeCountry!
                 destination.countryName = (cell?.textLabel?.text!)!
             }
+        }else if segue.identifier == "goToProfile" {
+            let destinationController = segue.destination as!   UserInfosController
+            destinationController.user = self.user
         }
     
     }
     
+    public func loadAllCountries(){
+        ref.child("countries").observeSingleEvent(of: .value, with: { (snapshot) in
+            let enumerator = snapshot.children
+           
+                for rest in (snapshot.children.allObjects as? [FIRDataSnapshot])!{
+                    if let namecountry = rest.childSnapshot(forPath: "nameCountry").value as? String{
+                        var country = Country(nameCountry:namecountry)
+                        if let codecountry = rest.childSnapshot(forPath: "codeCountry").value as? String{
+                            country.setCodeCountry(code: codecountry)
+                        }
+                        if let nbFR2015 = rest.childSnapshot(forPath: "nbFR2015").value as? String{
+                            country.setNbFrench2015(nb2015: nbFR2015)
+                        }
+                        if let nbFR2016 = rest.childSnapshot(forPath: "nbFR2016").value as? String{
+                            country.setNbFrench2016(nb2016: nbFR2016)
+                        }
+                        
+                        self.listAllCountries.append(country)
+                    }
+                    
+                   // var country = Country(nameCountry: (rest.childSnapshot(forPath: "nameCountry").value as? String)!)
+                    
+          
+                     //country.setCodeCountry(code: (rest.childSnapshot(forPath:"codeCountry").value as? String)!)
+                    // country.setNbFrench2015(nb2015: rest.childSnapshot(forPath: "nbFR2015").value as! NSNumber)
+                    // country.setNbFrench2016(nb2016: rest.childSnapshot(forPath: "nbFR2016").value as! NSNumber)
+                    //self.listAllCountries.append(country)
+                }
+  
+        })
+    }
     public func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("---------------- LOGGED OUT ------------")
         DispatchQueue.main.async{
@@ -183,6 +217,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
     
     
     
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationItem.backBarButtonItem?.isEnabled = true
     }
@@ -197,56 +232,6 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
     
     @IBOutlet weak var favCountries: UITableView!
     func loadFavCountries(user: User){
-        
-        var request = URLRequest(url:Constants.URLDatabase.favCountries!)
-        request.httpMethod = "POST"
-        let postParameters = "email="+user.getEmailUser()
-        request.httpBody = postParameters.data(using: .utf8)
-        let session = URLSession.shared
-        
-        let task = session.dataTask(with:request) { (data, response, error) -> Void in
-            
-            let httpResponse = response as! HTTPURLResponse
-
-            let statusCode = httpResponse.statusCode
-            
-            if (statusCode == 200) {
-                
-                do{
-                    let myJSON =  try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
-                    let countriesJSON = myJSON?["message"]
-                    DispatchQueue.main.async(execute: {
-                        for anItem in countriesJSON as! [Dictionary<String, Any>] {
-                            user.addFavouriteCountry(countryName:anItem["namecountry"] as! String, countrycode:anItem["codeCountry"] as! String)
-                    
-                        }
-                        self.FCArray = user.getFCUser()
-                        dump(self.FCArray)
-                        dump(user.getFCUser())
-                        self.favCountries.reloadData()
-                        DispatchQueue.main.async(execute: {
-                            self.favCountries.reloadData()
-                        })
-                    })
-                  //  if(user.favoritesCountries.isEmpty){
-                  //      self.favCountries.text = "Aucun pays favori"
-                  //  }else{
-                  //      self.favCountries.numberOfLines = user.getFCUser().count
-                  //      self.favCountries.text = 
-                  // (user.getFCUser().joined(separator: "\n"))
-                  //  }
-                }catch{
-                    
-                }
-             
-
-            }
-            
-            
-        }
-        
-        task.resume()
-        
         
     }
  
@@ -273,51 +258,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
     
     }
     
-    func createUserInDB(user:User){
-        
-        var request = URLRequest(url:Constants.URLDatabase.createUser!)
-        request.httpMethod = "POST"
-        let postParameters = "name="+user.getNameUser()+"&email="+user.getEmailUser()
-        request.httpBody = postParameters.data(using: .utf8)
 
-        let task = URLSession.shared.dataTask(with: request){
-            data, response, error in
-            
-            if error != nil{
-                print("error is \(String(describing: error))")
-                return;
-            }
-            
-            
-            //parsing the response
-            do {
-                //converting resonse to NSDictionary
-                let myJSON =  try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
-                
-                //parsing the json
-                if let parseJSON = myJSON {
-                    
-                    //creating a string
-                    var msg : String!
-                    
-                    //getting the json response
-                    msg = parseJSON["message"] as! String?
-                    
-                    //printing the response
-                 
-                    
-                }
-            } catch {
-                print(error)
-            }
-            
-        }
-        //executing the task
-        task.resume()
-        
-        
-        
-    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "td")

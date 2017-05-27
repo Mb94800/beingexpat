@@ -20,18 +20,21 @@ class SearchCountryViewController: UIViewController,  UITableViewDelegate, UITab
    
     var filtered:[String] = []
     var codeCountry: String?
-    var user = User(name:"",email:"")
-    var listCountries = [Dictionary<String, String>]()
+    var user:User!
+    var listCountries = [Country]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        /* Setup delegates */
-        tableCountries.delegate = self
-        tableCountries.dataSource = self
-        countrySearchBar.delegate = self
+       
     
-  
+            /* Setup delegates */
+            self.tableCountries.delegate = self
+            self.tableCountries.dataSource = self
+            self.countrySearchBar.delegate = self
+            var timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: "update", userInfo: nil, repeats: true)
+            
+            RunLoop.main.add(timer, forMode: RunLoopMode.defaultRunLoopMode)        
+      
     }
     
     
@@ -45,7 +48,16 @@ class SearchCountryViewController: UIViewController,  UITableViewDelegate, UITab
         // Dispose of any resources that can be recreated.
     }
 
-    
+    func update() {
+        
+      
+      
+            self.tableCountries.reloadData()
+            
+        print("called")
+        
+    }
+
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         searchActive = true;
@@ -111,7 +123,7 @@ class SearchCountryViewController: UIViewController,  UITableViewDelegate, UITab
         let cell = tableView.cellForRow(at: indexPath)
         
         let country = self.listCountries[indexPath.row]
-        codeCountry = country["code"]
+        codeCountry = country.getCodeCountry()
       
         
         super.performSegue(withIdentifier: "infosCountry", sender: cell)
@@ -122,7 +134,7 @@ class SearchCountryViewController: UIViewController,  UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "td")
         let country = self.listCountries[indexPath.row]
-        cell.textLabel?.text = country["name"]
+        cell.textLabel?.text = country.getNameCountry()
         cell.layer.backgroundColor = UIColor.clear.cgColor
         self.tableCountries.backgroundColor = .clear
         cell.backgroundColor = .clear
