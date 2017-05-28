@@ -23,6 +23,7 @@ class SearchCountryViewController: UIViewController,  UITableViewDelegate, UITab
     var codeCountry: String?
     var user:User!
     var listCountries = [Country]()
+   
     
     
     
@@ -100,17 +101,24 @@ class SearchCountryViewController: UIViewController,  UITableViewDelegate, UITab
             let barViewControllers = segue.destination as! UITabBarController
             
             if let destination = barViewControllers.viewControllers?[0] as? InfosCountryController {
-                let news = barViewControllers.viewControllers?[1] as? NewsCountryController
-                let chat = barViewControllers.viewControllers?[2] as? ChatCountryViewController
                 
                 let path = tableCountries.indexPathForSelectedRow
                 let cell = tableCountries.cellForRow(at: path!)
                 var countryName = (cell?.textLabel?.text!)!
                 var channelRef: FIRDatabaseReference = FIRDatabase.database().reference().child("countries\(countryName)")
+             
+                
+                let news = barViewControllers.viewControllers?[1] as? NewsCountryController
                 news?.countryName =  countryName
+                
+                
+                let chat = barViewControllers.viewControllers?[2] as? ChatCountryViewController
                 chat?.channel = countryName
                 chat?.channelRef = channelRef
                 chat?.senderDisplayName = user.getNameUser()
+                
+             
+             
                 destination.countryCode = codeCountry!
                 destination.countryName = (cell?.textLabel?.text!)!
             }

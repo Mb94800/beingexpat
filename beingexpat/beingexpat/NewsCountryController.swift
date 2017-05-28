@@ -18,13 +18,16 @@ class NewsCountryController: UIViewController,  UITableViewDelegate, UITableView
     var countryName = ""
     var countryCode = ""
     
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var loadingMessage: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.newsCountry.delegate = self
         self.newsCountry.dataSource = self
+        self.newsCountry.isHidden = true
         
-
-        print(self.countryName)
+        
         let feedURL = "https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fwww.lemonde.fr%2F\(self.countryName.folding(options: .diacriticInsensitive, locale: .current).lowercased())%2Frss_full.xml&api_key=lvggltdumxzjxsohj7h9raemainxsqf9qxmmknyp"
     
      
@@ -48,9 +51,9 @@ class NewsCountryController: UIViewController,  UITableViewDelegate, UITableView
                 
             }
             
-            print(self.newsArray)
-            print(self.newsArray.count)
-            print(self.countryName)
+            self.newsCountry.isHidden = false
+            self.loadingMessage.isHidden = true
+            self.loadingIndicator.isHidden = true
             self.newsCountry.reloadData()
             
         //let artist = feed?.value(forKeyPath: "feed.entry.im:artist.label") as? String
@@ -65,12 +68,29 @@ class NewsCountryController: UIViewController,  UITableViewDelegate, UITableView
         return self.newsArray.count
     }
    
-    
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat{
+        if(indexPath.row == 0){
+            return 260
+        }else{
+            return 100
+        }
+    }
+
+ 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
         let news = self.newsArray[indexPath.row]
         let enclosure = news["enclosure"] as! [String:Any]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! NewsCountryCell
+        var identifer: String
+        
+        if (indexPath.row  == 0){
+           identifer = "bigNews"
+        }else{
+           identifer = "cell"
+        }
+        
+         let cell = tableView.dequeueReusableCell(withIdentifier: identifer) as! NewsCountryCell
         cell.newsTitle.text = news["title"] as! String
         let urlimage = enclosure["link"] as! String
         let imageURL = URL(string: urlimage)!

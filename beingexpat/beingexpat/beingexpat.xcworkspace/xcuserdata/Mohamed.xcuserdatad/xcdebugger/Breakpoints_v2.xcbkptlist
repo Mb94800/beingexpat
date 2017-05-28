@@ -56,11 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UserInfosController.swift"
-            timestampString = "517608966.565377"
+            timestampString = "517665472.453643"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SignInViewController.swift"
-            timestampString = "517632074.5894"
+            timestampString = "517666333.431943"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
             landmarkName = "requestProfilePicture(idProfile:typeLogin:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -132,47 +132,77 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SignInViewController.swift"
-            timestampString = "517632074.5894"
+            filePath = "UserInfosController.swift"
+            timestampString = "517669484.582489"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "loginThroughFacebook(sender:)"
-            landmarkType = "7">
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "UserInfosController"
+            landmarkType = "3">
             <Locations>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "beingexpat.SignInViewController.(facebookLogin (sender : __ObjC.UIButton) -&gt; ()).(closure #1)"
+                  symbolName = "beingexpat.UserInfosController.creationDate.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
                   moduleName = "beingexpat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Mohamed/Documents/DEST_Informatique/PJs6/beingexpat/beingexpat/beingexpat/SignInViewController.swift"
-                  timestampString = "517630824.287276"
+                  urlString = "file:///Users/Mohamed/Documents/DEST_Informatique/PJs6/beingexpat/beingexpat/beingexpat/UserInfosController.swift"
+                  timestampString = "517669782.454112"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "90"
-                  endingLineNumber = "90"
-                  offsetFromSymbolStart = "1340">
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "40">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "beingexpat.SignInViewController.(facebookLogin (sender : __ObjC.UIButton) -&gt; ()).(closure #1).(closure #1)"
+                  symbolName = "beingexpat.UserInfosController.creationDate.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
                   moduleName = "beingexpat"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Mohamed/Documents/DEST_Informatique/PJs6/beingexpat/beingexpat/beingexpat/SignInViewController.swift"
-                  timestampString = "517630824.290899"
+                  urlString = "file:///Users/Mohamed/Documents/DEST_Informatique/PJs6/beingexpat/beingexpat/beingexpat/UserInfosController.swift"
+                  timestampString = "517669782.456545"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "91"
-                  endingLineNumber = "91"
-                  offsetFromSymbolStart = "32">
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "beingexpat.UserInfosController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; beingexpat.UserInfosController"
+                  moduleName = "beingexpat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Mohamed/Documents/DEST_Informatique/PJs6/beingexpat/beingexpat/beingexpat/UserInfosController.swift"
+                  timestampString = "517669782.45927"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "420">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "beingexpat.UserInfosController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;beingexpat.UserInfosController&gt;"
+                  moduleName = "beingexpat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Mohamed/Documents/DEST_Informatique/PJs6/beingexpat/beingexpat/beingexpat/UserInfosController.swift"
+                  timestampString = "517669782.463404"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "356">
                </Location>
             </Locations>
          </BreakpointContent>

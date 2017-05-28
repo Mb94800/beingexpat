@@ -17,6 +17,7 @@ class UserInfosController: UIViewController, UINavigationControllerDelegate, UII
     @IBOutlet weak var changePicture: UIImageView!
     @IBOutlet weak var emailAssociated: UILabel!
     @IBOutlet weak var birthday: UILabel!
+    @IBOutlet weak var creationDate: UILabel!
     var user: User!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,7 @@ class UserInfosController: UIViewController, UINavigationControllerDelegate, UII
         profileName.text = user.getNameUser()
         birthday.text = user.getBirthday()
         emailAssociated.text = user.getEmailUser()
+        creationDate.text = user.getCreationDate()
         
         let storage = FIRStorage.storage()
         let storageRef = storage.reference()

@@ -31,6 +31,7 @@ class SignInViewController: UIViewController{
     @IBOutlet weak var loginFB: UIButton!
     
    
+    @IBOutlet weak var loginGoogle: UIButton!
 
     
     override func viewDidLoad() {
@@ -46,17 +47,15 @@ class SignInViewController: UIViewController{
      //   loginFB?.delegate = self
         self.navigationController?.popToRootViewController(animated: true)
         if((FBSDKAccessToken.current()) != nil){
-           
+           self.loginFacebook()
         }
     
         
     
  
     }
-
-
     
-    @IBAction func loginThroughFacebook(sender: AnyObject) {
+    func loginFacebook(){
         var fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
         fbLoginManager .logIn(withReadPermissions: ["email","public_profile","user_photos","user_birthday"], handler: { (result, error) -> Void in
             if (error == nil){
@@ -90,18 +89,22 @@ class SignInViewController: UIViewController{
                     let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewControllerID") as! HomeViewController
                     
-                    print("------- SIGNINVIEWCONTROLLER")
-                    dump(user)
-                    print("------- SIGNINVIEWCONTROLLER")
                     vc.user = self.user
                     self.show(vc, sender: self)
                     
                 })
-    
                 
-
+                
+                
             }
         })
+
+    }
+
+
+    
+    @IBAction func loginThroughFacebook(sender: AnyObject) {
+        self.loginFacebook()
     }
 
     
@@ -154,7 +157,7 @@ class SignInViewController: UIViewController{
         let request = GraphRequest(graphPath: "me", parameters: ["fields":"email,name,photos,birthday"], accessToken: AccessToken.current, httpMethod: .GET, apiVersion: FacebookCore.GraphAPIVersion.defaultVersion)
         request.start { (response, result) in
             switch result {
-            case .success(let value):
+            case .success(var value):
                 let id = value.dictionaryValue!["id"] as! String
                 let name = value.dictionaryValue!["name"]
                 let email = value.dictionaryValue!["email"]
@@ -163,12 +166,15 @@ class SignInViewController: UIViewController{
                 self.user.setNameUser(name: name as! String)
                 self.user.setEmailUser(email: email as! String)
                 self.user.setBirthday(birthday: birthday as! String)
-                self.ref.child("users/\(id)/").setValue(value.dictionaryValue)
+               
                 let date = Date()
                 let formatter = DateFormatter()
                 formatter.dateFormat = "dd.MM.yyyy"
                 let result = formatter.string(from: date)
+              
                 self.user.setCreationDate(creationDate: result)
+                self.ref.child("users/\(id)/").setValue(value.dictionaryValue)
+                self.ref.child("users/\(id)/creationDate").setValue(result)
                 self.requestProfilePicture(idProfile: id, typeLogin: "fb")
             case .failed(let error):
                 print(error)
