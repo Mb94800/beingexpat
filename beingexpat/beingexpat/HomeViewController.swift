@@ -22,6 +22,14 @@ import FBSDKLoginKit
 @objc(HomeViewController)
 // [START viewcontroller_interfaces]
 class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableViewDelegate, UITableViewDataSource {
+    /**
+     Sent to the delegate when the button was used to logout.
+     - Parameter loginButton: The button that was clicked.
+     */
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        
+    }
+
    
 
     /**
@@ -33,7 +41,8 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
    
     @IBOutlet weak var goToProfile: UIButton!
     
-    @IBOutlet weak var logout: FBSDKLoginButton!
+    @IBOutlet weak var logout: UIButton!
+
     var ref: FIRDatabaseReference!
     var codeCountry: String?
     var dataArray = [String]()
@@ -76,7 +85,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
         self.ref = FIRDatabase.database().reference()
         self.loadAllCountries()
         self.navigationItem.setHidesBackButton(true, animated:true);
-        view.addSubview(loginButton!)
+        
         //favCountries.delegate = self
         //favCountries.dataSource = self
         let params = ["fields" : "email, name"]
@@ -86,8 +95,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
       
         
         
-        
-        loginButton?.delegate = self
+    
         
         if (FBSDKAccessToken.current()) != nil {
             
@@ -173,30 +181,31 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UITableVie
   
         })
     }
-    public func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+    
+    @IBAction func logoutNow(_ sender: UIButton) {
+        
         print("---------------- LOGGED OUT ------------")
         DispatchQueue.main.async{
-            //let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            //  let vc = storyboard.instantiateViewController(withIdentifier: "SignInViewControllerID")
-            //self.show(vc, sender: self)
+            if FBSDKAccessToken.current() != nil {
+                let logout = FBSDKLoginManager()
+                logout.logOut()
+                
+            }
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "SignInViewControllerID")
+            self.show(vc, sender: self)
         }
     }
-    
+   
 
-
     
-    
-
 
 
     
-    @IBOutlet weak var loginButton: FBSDKLoginButton? = {
-            let button = FBSDKLoginButton()
-            button.readPermissions = ["email"]
-            return button
-      
-    }()
- 
+    
+
+
+
     
     /**
      Sent to the delegate when the button was used to login.

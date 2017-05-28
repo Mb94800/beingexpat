@@ -1,6 +1,9 @@
 project '../beingexpat.xcodeproj'
 platform :ios, '8.1'
 target "beingexpat" do
+
+    pod 'JSQMessagesViewController'
+    pod 'JSQSystemSoundPlayer'
     pod 'Google/SignIn'
     
     

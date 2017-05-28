@@ -45,6 +45,8 @@
 		D9BB54FC1E7E001E0051226D /* beingexpatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB54FB1E7E001E0051226D /* beingexpatUITests.swift */; };
 		D9BB550A1E7E005D0051226D /* logobigearthptitexte.png in Resources */ = {isa = PBXBuildFile; fileRef = D9BB55091E7E005D0051226D /* logobigearthptitexte.png */; };
 		D9BB550C1E7E00A80051226D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D9BB550B1E7E00A80051226D /* Podfile */; };
+		D9BF460B1EDA2875007ED272 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BF460A1EDA2875007ED272 /* Channel.swift */; };
+		D9BF460D1EDA31EF007ED272 /* ChatCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BF460C1EDA31EF007ED272 /* ChatCountryViewController.swift */; };
 		D9D9ACE71EB3D5B600B29A4B /* UserInfosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D9ACE61EB3D5B500B29A4B /* UserInfosController.swift */; };
 		D9D9ACE91EB3D73600B29A4B /* DSCameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D9ACE81EB3D73600B29A4B /* DSCameraHandler.swift */; };
 		D9D9ACEB1EB652AB00B29A4B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D9ACEA1EB652AB00B29A4B /* Extensions.swift */; };
@@ -115,6 +117,8 @@
 		D9BB54FD1E7E001E0051226D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9BB55091E7E005D0051226D /* logobigearthptitexte.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logobigearthptitexte.png; path = ../../../../../../Downloads/logobigearthptitexte.png; sourceTree = "<group>"; };
 		D9BB550B1E7E00A80051226D /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Podfile; path = beingexpat/Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D9BF460A1EDA2875007ED272 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		D9BF460C1EDA31EF007ED272 /* ChatCountryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCountryViewController.swift; sourceTree = "<group>"; };
 		D9D9ACE61EB3D5B500B29A4B /* UserInfosController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfosController.swift; sourceTree = "<group>"; };
 		D9D9ACE81EB3D73600B29A4B /* DSCameraHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSCameraHandler.swift; sourceTree = "<group>"; };
 		D9D9ACEA1EB652AB00B29A4B /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 				D90A0F271ED9D9110073C451 /* News-10.png */,
 				D9D9ACE61EB3D5B500B29A4B /* UserInfosController.swift */,
 				D90A0F251ED9D5000073C451 /* ic_warning_48pt_3x.png */,
+				D9BF460C1EDA31EF007ED272 /* ChatCountryViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -197,6 +202,7 @@
 				D9D9ACEA1EB652AB00B29A4B /* Extensions.swift */,
 				D938DDC81EC30E26007ACD44 /* NewsCountryCell.swift */,
 				D938DDCA1EC48D68007ACD44 /* Reachability.swift */,
+				D9BF460A1EDA2875007ED272 /* Channel.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -475,7 +481,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -492,6 +498,7 @@
 				D9B1EFB21EA3D42100322080 /* ListCountries.swift in Sources */,
 				D999F7551E7E0DC100993780 /* AppDelegate.swift in Sources */,
 				D999F7661E7EEF7600993780 /* SignInViewController.swift in Sources */,
+				D9BF460B1EDA2875007ED272 /* Channel.swift in Sources */,
 				D9975F7C1EAB78A100676331 /* NewsCountryController.swift in Sources */,
 				D9D9ACE71EB3D5B600B29A4B /* UserInfosController.swift in Sources */,
 				D984F57F1EA751CD00F0900D /* GMapsDemo-Bridging-Header.m in Sources */,
@@ -505,6 +512,7 @@
 				D94874831E9AEF1800B2A132 /* InfosCountryController.swift in Sources */,
 				D938DDCB1EC48D69007ACD44 /* Reachability.swift in Sources */,
 				D9975F7E1EABA94900676331 /* XMLParser.swift in Sources */,
+				D9BF460D1EDA31EF007ED272 /* ChatCountryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

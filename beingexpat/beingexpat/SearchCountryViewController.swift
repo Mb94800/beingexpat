@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 class SearchCountryViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource,  UISearchBarDelegate
 {
@@ -22,6 +23,8 @@ class SearchCountryViewController: UIViewController,  UITableViewDelegate, UITab
     var codeCountry: String?
     var user:User!
     var listCountries = [Country]()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,10 +101,16 @@ class SearchCountryViewController: UIViewController,  UITableViewDelegate, UITab
             
             if let destination = barViewControllers.viewControllers?[0] as? InfosCountryController {
                 let news = barViewControllers.viewControllers?[1] as? NewsCountryController
+                let chat = barViewControllers.viewControllers?[2] as? ChatCountryViewController
                 
                 let path = tableCountries.indexPathForSelectedRow
                 let cell = tableCountries.cellForRow(at: path!)
-                news?.countryName = (cell?.textLabel?.text!)!
+                var countryName = (cell?.textLabel?.text!)!
+                var channelRef: FIRDatabaseReference = FIRDatabase.database().reference().child("countries\(countryName)")
+                news?.countryName =  countryName
+                chat?.channel = countryName
+                chat?.channelRef = channelRef
+                chat?.senderDisplayName = user.getNameUser()
                 destination.countryCode = codeCountry!
                 destination.countryName = (cell?.textLabel?.text!)!
             }
@@ -138,6 +147,7 @@ class SearchCountryViewController: UIViewController,  UITableViewDelegate, UITab
         cell.layer.backgroundColor = UIColor.clear.cgColor
         self.tableCountries.backgroundColor = .clear
         cell.backgroundColor = .clear
+
         return cell
     }
 }

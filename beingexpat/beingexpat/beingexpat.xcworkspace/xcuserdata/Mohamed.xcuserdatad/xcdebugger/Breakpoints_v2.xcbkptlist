@@ -88,13 +88,93 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SignInViewController.swift"
-            timestampString = "517609652.150911"
+            timestampString = "517632074.5894"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "requestProfilePicture(idProfile:typeLogin:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/FacebookShare/Sources/Share/Content/Link/LinkShareContent.swift"
+            timestampString = "517620171.556331"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "sdkSharingContentRepresentation"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HomeViewController.swift"
+            timestampString = "517629355.243449"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
+            landmarkName = "HomeViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SignInViewController.swift"
+            timestampString = "517632074.5894"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "loginThroughFacebook(sender:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "beingexpat.SignInViewController.(facebookLogin (sender : __ObjC.UIButton) -&gt; ()).(closure #1)"
+                  moduleName = "beingexpat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Mohamed/Documents/DEST_Informatique/PJs6/beingexpat/beingexpat/beingexpat/SignInViewController.swift"
+                  timestampString = "517630824.287276"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
+                  offsetFromSymbolStart = "1340">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "beingexpat.SignInViewController.(facebookLogin (sender : __ObjC.UIButton) -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "beingexpat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Mohamed/Documents/DEST_Informatique/PJs6/beingexpat/beingexpat/beingexpat/SignInViewController.swift"
+                  timestampString = "517630824.290899"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

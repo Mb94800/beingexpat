@@ -25,34 +25,30 @@
                                 <rect key="frame" x="93" y="136" width="162" height="169"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B5x-rn-SXa" customClass="GIDSignInButton">
-                                <rect key="frame" x="67" y="313" width="240" height="128"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyN-At-Rst">
+                                <rect key="frame" x="43" y="450" width="289" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DJo-Xv-57O">
-                                <rect key="frame" x="67" y="517" width="240" height="69"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyN-At-Rst" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="80" y="462" width="189" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="SE CONNECTER VIA FACEBOOK">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginThroughFacebook:" destination="dyX-Q8-0q7" eventType="touchUpInside" id="eyj-2H-HAt"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="qQb-Jn-WK2"/>
                     <connections>
-                        <outlet property="loginButton" destination="qyN-At-Rst" id="xeS-H7-ME4"/>
-                        <outlet property="signInButton" destination="B5x-rn-SXa" id="f5l-bQ-BKh"/>
+                        <outlet property="loginFB" destination="qyN-At-Rst" id="Cgm-dc-ZGF"/>
                         <segue destination="KbS-3Y-CBD" kind="show" identifier="ouaiouai" id="aIl-98-hQi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wyn-bJ-0EO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="697" y="161"/>
+            <point key="canvasLocation" x="696.79999999999995" y="160.56971514242881"/>
         </scene>
         <!--Accueil-->
         <scene sceneID="UqQ-ZD-WZK">
@@ -66,14 +62,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxh-ek-iW1" customClass="FBSDKLoginButton">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxh-ek-iW1">
                                 <rect key="frame" x="16" y="548" width="349" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.66088953260000005" green="0.80576059450000004" blue="0.81767447380000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.82116895914077759" green="0.27479043356024857" blue="0.25953283923441006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="SE DECONNECTER">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginButtonDidLogOut:" destination="KbS-3Y-CBD" eventType="touchUpInside" id="zdD-JM-t4J"/>
+                                    <action selector="logoutNow:" destination="KbS-3Y-CBD" eventType="touchUpInside" id="UZw-Zx-xsr"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cw-7q-HBk">
                                 <rect key="frame" x="16" y="460" width="349" height="72"/>
@@ -119,8 +119,7 @@
                     <navigationItem key="navigationItem" title="Accueil" id="Vye-nk-922"/>
                     <connections>
                         <outlet property="goToProfile" destination="wTf-Hk-kvC" id="3sA-S9-S4c"/>
-                        <outlet property="loginButton" destination="hxh-ek-iW1" id="bRP-2R-ogv"/>
-                        <outlet property="logout" destination="hxh-ek-iW1" id="G6H-76-C1F"/>
+                        <outlet property="logout" destination="hxh-ek-iW1" id="OiD-hd-Opx"/>
                         <outlet property="searchDisplayController" destination="f4A-4c-qeT" id="OL1-ax-VuB"/>
                         <outlet property="searchcountry" destination="8oT-xs-vIn" id="kyT-eH-IHa"/>
                         <outlet property="view" destination="9Q9-dx-erR" id="294-08-VpH"/>
@@ -396,7 +395,7 @@
         <!--Chat-->
         <scene sceneID="EpU-Vh-b32">
             <objects>
-                <viewController id="FHz-5A-SMz" sceneMemberID="viewController">
+                <viewController id="FHz-5A-SMz" customClass="ChatCountryViewController" customModule="beingexpat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7QB-EH-jJr"/>
                         <viewControllerLayoutGuide type="bottom" id="Qf5-W9-H31"/>
@@ -410,7 +409,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Op8-s9-uQm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3329" y="1039"/>
+            <point key="canvasLocation" x="3328.8000000000002" y="1038.5307346326838"/>
         </scene>
         <!--Infos générales-->
         <scene sceneID="37Z-fz-DFb">
@@ -564,7 +563,7 @@
                     <connections>
                         <segue destination="CNa-LD-pxa" kind="relationship" relationship="viewControllers" id="0ul-4K-8ph"/>
                         <segue destination="x9P-XG-aoG" kind="relationship" relationship="viewControllers" id="2ac-m8-4J1"/>
-                        <segue destination="FHz-5A-SMz" kind="relationship" relationship="viewControllers" id="kut-n4-PS5"/>
+                        <segue destination="FHz-5A-SMz" kind="relationship" relationship="viewControllers" id="Vt6-bC-s0T"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U2Z-5t-sap" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -576,7 +575,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vLz-Cc-LZy" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ymb-0e-khB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ymb-0e-khB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -604,6 +603,6 @@
         <image name="plus-empty.png" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8Vi-e9-DIs"/>
+        <segue reference="kZ1-Qc-Py3"/>
     </inferredMetricsTieBreakers>
 </document>
